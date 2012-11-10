@@ -1,0 +1,298 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		89188CB9164ED5C60045B36F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89188CB8164ED5C60045B36F /* UIKit.framework */; };
+		89188CBB164ED5C60045B36F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89188CBA164ED5C60045B36F /* Foundation.framework */; };
+		89188CBD164ED5C60045B36F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89188CBC164ED5C60045B36F /* CoreGraphics.framework */; };
+		89188CC3164ED5C60045B36F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 89188CC1164ED5C60045B36F /* InfoPlist.strings */; };
+		89188CC5164ED5C60045B36F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 89188CC4164ED5C60045B36F /* main.m */; };
+		89188CC9164ED5C70045B36F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 89188CC8164ED5C70045B36F /* AppDelegate.m */; };
+		89188CCB164ED5C70045B36F /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 89188CCA164ED5C70045B36F /* Default.png */; };
+		89188CCD164ED5C70045B36F /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89188CCC164ED5C70045B36F /* Default@2x.png */; };
+		89188CCF164ED5C70045B36F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89188CCE164ED5C70045B36F /* Default-568h@2x.png */; };
+		89188CD2164ED5C70045B36F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89188CD1164ED5C70045B36F /* ViewController.m */; };
+		89188CD5164ED5C70045B36F /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 89188CD3164ED5C70045B36F /* ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		89188CB4164ED5C60045B36F /* Pasteur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pasteur.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		89188CB8164ED5C60045B36F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		89188CBA164ED5C60045B36F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		89188CBC164ED5C60045B36F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		89188CC0164ED5C60045B36F /* Pasteur-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pasteur-Info.plist"; sourceTree = "<group>"; };
+		89188CC2164ED5C60045B36F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		89188CC4164ED5C60045B36F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		89188CC6164ED5C60045B36F /* Pasteur-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pasteur-Prefix.pch"; sourceTree = "<group>"; };
+		89188CC7164ED5C60045B36F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		89188CC8164ED5C70045B36F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		89188CCA164ED5C70045B36F /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		89188CCC164ED5C70045B36F /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		89188CCE164ED5C70045B36F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		89188CD0164ED5C70045B36F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		89188CD1164ED5C70045B36F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		89188CD4164ED5C70045B36F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		89188CB1164ED5C60045B36F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89188CB9164ED5C60045B36F /* UIKit.framework in Frameworks */,
+				89188CBB164ED5C60045B36F /* Foundation.framework in Frameworks */,
+				89188CBD164ED5C60045B36F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		89188CA9164ED5C60045B36F = {
+			isa = PBXGroup;
+			children = (
+				89188CBE164ED5C60045B36F /* Pasteur */,
+				89188CB7164ED5C60045B36F /* Frameworks */,
+				89188CB5164ED5C60045B36F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		89188CB5164ED5C60045B36F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				89188CB4164ED5C60045B36F /* Pasteur.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		89188CB7164ED5C60045B36F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89188CB8164ED5C60045B36F /* UIKit.framework */,
+				89188CBA164ED5C60045B36F /* Foundation.framework */,
+				89188CBC164ED5C60045B36F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		89188CBE164ED5C60045B36F /* Pasteur */ = {
+			isa = PBXGroup;
+			children = (
+				89188CC7164ED5C60045B36F /* AppDelegate.h */,
+				89188CC8164ED5C70045B36F /* AppDelegate.m */,
+				89188CD0164ED5C70045B36F /* ViewController.h */,
+				89188CD1164ED5C70045B36F /* ViewController.m */,
+				89188CD3164ED5C70045B36F /* ViewController.xib */,
+				89188CBF164ED5C60045B36F /* Supporting Files */,
+			);
+			path = Pasteur;
+			sourceTree = "<group>";
+		};
+		89188CBF164ED5C60045B36F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				89188CC0164ED5C60045B36F /* Pasteur-Info.plist */,
+				89188CC1164ED5C60045B36F /* InfoPlist.strings */,
+				89188CC4164ED5C60045B36F /* main.m */,
+				89188CC6164ED5C60045B36F /* Pasteur-Prefix.pch */,
+				89188CCA164ED5C70045B36F /* Default.png */,
+				89188CCC164ED5C70045B36F /* Default@2x.png */,
+				89188CCE164ED5C70045B36F /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		89188CB3164ED5C60045B36F /* Pasteur */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 89188CD8164ED5C70045B36F /* Build configuration list for PBXNativeTarget "Pasteur" */;
+			buildPhases = (
+				89188CB0164ED5C60045B36F /* Sources */,
+				89188CB1164ED5C60045B36F /* Frameworks */,
+				89188CB2164ED5C60045B36F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pasteur;
+			productName = Pasteur;
+			productReference = 89188CB4164ED5C60045B36F /* Pasteur.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		89188CAB164ED5C60045B36F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Harvard University";
+			};
+			buildConfigurationList = 89188CAE164ED5C60045B36F /* Build configuration list for PBXProject "Pasteur" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 89188CA9164ED5C60045B36F;
+			productRefGroup = 89188CB5164ED5C60045B36F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				89188CB3164ED5C60045B36F /* Pasteur */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		89188CB2164ED5C60045B36F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89188CC3164ED5C60045B36F /* InfoPlist.strings in Resources */,
+				89188CCB164ED5C70045B36F /* Default.png in Resources */,
+				89188CCD164ED5C70045B36F /* Default@2x.png in Resources */,
+				89188CCF164ED5C70045B36F /* Default-568h@2x.png in Resources */,
+				89188CD5164ED5C70045B36F /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		89188CB0164ED5C60045B36F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89188CC5164ED5C60045B36F /* main.m in Sources */,
+				89188CC9164ED5C70045B36F /* AppDelegate.m in Sources */,
+				89188CD2164ED5C70045B36F /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		89188CC1164ED5C60045B36F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89188CC2164ED5C60045B36F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		89188CD3164ED5C70045B36F /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				89188CD4164ED5C70045B36F /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		89188CD6164ED5C70045B36F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		89188CD7164ED5C70045B36F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		89188CD9164ED5C70045B36F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pasteur/Pasteur-Prefix.pch";
+				INFOPLIST_FILE = "Pasteur/Pasteur-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		89188CDA164ED5C70045B36F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pasteur/Pasteur-Prefix.pch";
+				INFOPLIST_FILE = "Pasteur/Pasteur-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		89188CAE164ED5C60045B36F /* Build configuration list for PBXProject "Pasteur" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89188CD6164ED5C70045B36F /* Debug */,
+				89188CD7164ED5C70045B36F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		89188CD8164ED5C70045B36F /* Build configuration list for PBXNativeTarget "Pasteur" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89188CD9164ED5C70045B36F /* Debug */,
+				89188CDA164ED5C70045B36F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 89188CAB164ED5C60045B36F /* Project object */;
+}
