@@ -281,6 +281,7 @@
 				GCC_PREFIX_HEADER = "Pasteur/Pasteur-Prefix.pch";
 				INFOPLIST_FILE = "Pasteur/Pasteur-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -297,6 +298,7 @@
 				GCC_PREFIX_HEADER = "Pasteur/Pasteur-Prefix.pch";
 				INFOPLIST_FILE = "Pasteur/Pasteur-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
