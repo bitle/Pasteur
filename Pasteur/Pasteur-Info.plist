@@ -14,7 +14,7 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>Screen Shot 2012-11-10 at 10.18.12 PM.png</string>
+				<string>pasteur_highres.png</string>
 				<string>pasteur_lowres.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
