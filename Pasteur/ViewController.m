@@ -10,7 +10,7 @@
 #import "ViewController.h"
 
 @implementation ViewController
-@synthesize webView;
+@synthesize textView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,6 +45,8 @@
              if (!error) {
                  NSLog(@"User info. [%@] - %@", user.id, user.name);
                  NSLog(@"Access Token: %@", FBSession.activeSession.accessToken);
+
+
                  //NSString *str = [NSString stringWithFormat:@"https://script.google.com/macros/s/AKfycbxwe6-wxW_gjoW05iKNiG_T0qez9uBWueYBQwWxf6g8qYQlSzse/exec?uid=%@&access_token=%@", user.id, FBSession.activeSession.accessToken];
                  //NSURL *url = [NSURL URLWithString:str];
                  //NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];

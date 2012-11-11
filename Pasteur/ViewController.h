@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController {
-    UIWebView *webView;
+    UITextView *textView;
 }
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
+
+@property (nonatomic, strong) IBOutlet UITextView *textView;
 @end
