@@ -29,9 +29,9 @@
                                                                                  error:error];
                                                          }];
 
-    NSURL *url = [NSURL URLWithString:@"https://google.com"];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:requestObj];
+    //NSURL *url = [NSURL URLWithString:@"https://google.com"];
+    //NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    //[self.webView loadRequest:requestObj];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -45,10 +45,10 @@
              if (!error) {
                  NSLog(@"User info. [%@] - %@", user.id, user.name);
                  NSLog(@"Access Token: %@", FBSession.activeSession.accessToken);
-                 NSString *str = [NSString stringWithFormat:@"https://script.google.com/macros/s/AKfycbxwe6-wxW_gjoW05iKNiG_T0qez9uBWueYBQwWxf6g8qYQlSzse/exec?uid=%@&access_token=%@", user.id, FBSession.activeSession.accessToken];
-                 NSURL *url = [NSURL URLWithString:str];
-                 NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-                 [self.webView loadRequest:requestObj];
+                 //NSString *str = [NSString stringWithFormat:@"https://script.google.com/macros/s/AKfycbxwe6-wxW_gjoW05iKNiG_T0qez9uBWueYBQwWxf6g8qYQlSzse/exec?uid=%@&access_token=%@", user.id, FBSession.activeSession.accessToken];
+                 //NSURL *url = [NSURL URLWithString:str];
+                 //NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+                 //[self.webView loadRequest:requestObj];
              }
          }];
     }
