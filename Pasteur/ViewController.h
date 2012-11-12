@@ -10,7 +10,12 @@
 
 @interface ViewController : UIViewController {
     UITextView *textView;
+    NSArray *questions;
+    NSUInteger currentIndex;
 }
 
 @property (nonatomic, strong) IBOutlet UITextView *textView;
+@property (strong) NSArray *questions;
+
+- (IBAction)updateQuestion;
 @end

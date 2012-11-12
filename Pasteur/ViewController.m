@@ -13,6 +13,7 @@
 
 @implementation ViewController
 @synthesize textView;
+@synthesize questions;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -112,7 +113,14 @@
     NSString *responseString = [request responseString];
     NSLog(@"reponse: %@", responseString);
 
-    NSDictionary *question = [responseString JSONValue];
+    NSArray *theQuestions = [responseString JSONValue];
+    self.questions = theQuestions;
+
+    [self updateQuestion];
+}
+
+- (IBAction)updateQuestion {
+    NSDictionary *question = [questions objectAtIndex: currentIndex++];
     self.textView.text = [question objectForKey:@"question"];
 }
 
