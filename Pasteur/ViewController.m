@@ -14,6 +14,9 @@
 @implementation ViewController
 @synthesize textView;
 @synthesize questions;
+@synthesize buttons;
+@synthesize slider;
+@synthesize button;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,10 +34,11 @@
                                                                                  state:state
                                                                                  error:error];
                                                          }];
+    self.buttons.backgroundColor = [UIColor clearColor];
+    self.buttons.hidden = YES;
 
-    //NSURL *url = [NSURL URLWithString:@"https://google.com"];
-    //NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    //[self.webView loadRequest:requestObj];
+    self.slider.hidden = YES;
+    self.button.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -116,12 +120,46 @@
     NSArray *theQuestions = [responseString JSONValue];
     self.questions = theQuestions;
 
-    [self updateQuestion];
+    [self updateQuestion:nil];
+    self.button.hidden = NO;
 }
 
-- (IBAction)updateQuestion {
+- (IBAction)updateQuestion:(id)sender {
+    if (currentIndex == questions.count - 1) {
+        self.button.titleLabel.text = @"Finish";
+    } else if (currentIndex == questions.count) {
+        [self finishSurvey];
+        return;
+    }
+
     NSDictionary *question = [questions objectAtIndex: currentIndex++];
     self.textView.text = [question objectForKey:@"question"];
+
+    NSLog(@"type: %@", [question objectForKey:@"type"]);
+    if ([@"slider" isEqualToString: [question objectForKey:@"type"]]) {
+        self.slider.hidden = NO;
+        self.buttons.hidden = YES;
+    } else if ([@"bool" isEqualToString: [question objectForKey:@"type"]]) {
+        self.slider.hidden = YES;
+        self.buttons.hidden = NO;
+    }
+}
+
+- (void)finishSurvey {
+    NSLog(@"Finish Survey");
+}
+
+- (IBAction)buttonClicked:(id)sender {
+    switch ([sender tag]) {
+        case 0:
+            NSLog(@"Yes");
+            break;
+        case 1:
+            NSLog(@"No");
+            break;
+        default:
+            NSLog(@"Unexpected tag %d", [sender tag]);
+    }
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request
@@ -129,5 +167,4 @@
    NSError *error = [request error];
     NSLog(@"response failed: %@", [error debugDescription]);
 }
-
 @end
