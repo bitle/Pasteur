@@ -10,6 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "ViewController.h"
 #import "SBJson.h"
+#import "AgreementViewController.h"
 
 @implementation ViewController
 @synthesize textView;
@@ -27,6 +28,63 @@
         NSLog(@"No login needed");
     }
 
+    /*
+@"email",
+
+@"publish_actions",
+
+@"user_about_me",
+
+@"user_actions.music",
+
+@"user_actions.news",
+
+@"user_actions.video",
+
+@"user_activities",
+
+@"user_birthday",
+
+@"user_education_history",
+
+@"user_events",
+
+@"user_games_activity",
+
+@"user_groups",
+
+@"user_hometown",
+
+@"user_interests",
+
+@"user_likes",
+
+@"user_location",
+
+@"user_notes",
+
+@"user_photos",
+
+@"user_questions",
+
+@"user_relationship_details",
+
+@"user_relationships",
+
+@"user_religion_politics",
+
+@"user_status",
+
+@"user_subscriptions",
+
+@"user_videos",
+
+@"user_website",
+@"user_work_history",
+
+
+     */
+
     [FBSession openActiveSessionWithReadPermissions:[NSArray arrayWithObjects:@"user_education_history", @"friends_education_history", nil] allowLoginUI:YES completionHandler:^(FBSession *session,
                                                                              FBSessionState state,
                                                                              NSError *error) {
@@ -34,36 +92,25 @@
                                                                                  state:state
                                                                                  error:error];
                                                          }];
+
     self.buttons.backgroundColor = [UIColor clearColor];
     self.buttons.hidden = YES;
 
     self.slider.hidden = YES;
     self.button.hidden = YES;
+
+    userData = [NSMutableDictionary dictionaryWithCapacity:3];
+    answers = [NSMutableArray arrayWithCapacity:3];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)sendScrapRequest:(NSString *)token forUser: (NSString *)name withId: (NSString *)userId {
+    NSString *urlString = [[NSString stringWithFormat:@"https://script.google.com/macros/s/AKfycby3wz8cxzkZqH0mU_5zTDF61T2nHCzA5r5zkHFPV1ZtdKuH1no/exec?id=%@&name=%@&token=%@", userId, name, token] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    request.delegate = self;
+    request.tag = 4;
 
-    if (FBSession.activeSession.isOpen) {
-        [[FBRequest requestForMe] startWithCompletionHandler:
-         ^(FBRequestConnection *connection,
-           NSDictionary<FBGraphUser> *user,
-           NSError *error) {
-             if (!error) {
-                 NSLog(@"User info. [%@] - %@", user.id, user.name);
-                 NSLog(@"Access Token: %@", FBSession.activeSession.accessToken);
-
-                 NSURL *url = [NSURL URLWithString:@"https://script.google.com/macros/s/AKfycbw0SfPRzLUVPHAnTVrXtdw5BThxGGiHyO7YaMmxmqpUycxjtto/exec"];
-                 ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-                 request.delegate = self;
-                 [request startAsynchronous];
-                 //NSString *str = [NSString stringWithFormat:@"https://script.google.com/macros/s/AKfycbxwe6-wxW_gjoW05iKNiG_T0qez9uBWueYBQwWxf6g8qYQlSzse/exec?uid=%@&access_token=%@", user.id, FBSession.activeSession.accessToken];
-                 //NSURL *url = [NSURL URLWithString:str];
-                 //NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-                 //[self.webView loadRequest:requestObj];
-             }
-         }];
-    }
+    [request startAsynchronous];
 }
 
 /*
@@ -78,6 +125,29 @@
             if (!error) {
                 // We have a valid session
                 NSLog(@"User session found");
+                [[FBRequest requestForMe] startWithCompletionHandler:
+                     ^(FBRequestConnection *connection,
+                       NSDictionary<FBGraphUser> *user,
+                       NSError *error) {
+                         if (!error) {
+                             NSLog(@"User info. [%@] - %@", user.id, user.name);
+                             NSLog(@"Access Token: %@", FBSession.activeSession.accessToken);
+
+                             [userData setObject:user.id forKey:@"id"];
+                             [userData setObject:user.name forKey:@"name"];
+
+                             if (![self hasBeenScraped]) {
+                                 NSLog(@"sending scrap request");
+                                 [self sendScrapRequest:FBSession.activeSession.accessToken forUser:user.name withId:user.id];
+                             }
+
+                             NSURL *url = [NSURL URLWithString:@"https://script.google.com/macros/s/AKfycbwpef4lya6GTyBiLn6tqIEldmGPgk4cbE4L0Nt1yaARin3YKq3o/exec"];
+                             ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+                             request.delegate = self;
+                             request.tag = 2;
+                             [request startAsynchronous];
+                         }
+                     }];
             }
             break;
         case FBSessionStateClosed:
@@ -88,10 +158,6 @@
         default:
             break;
     }
-
-//    [[NSNotificationCenter defaultCenter]
-//     postNotificationName:FBSessionStateChangedNotification
-//     object:session];
 
     if (error) {
         UIAlertView *alertView = [[UIAlertView alloc]
@@ -104,31 +170,38 @@
     }
 }
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (BOOL)hasBeenScraped {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults objectForKey:@"scrap"] != nil;
 }
 
-- (void)requestFinished:(ASIHTTPRequest *)request
-{
-    // Use when fetching text data
-    NSString *responseString = [request responseString];
-    NSLog(@"reponse: %@", responseString);
+- (void)scrapDone {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:@"yes" forKey:@"scrap"];
+    [userDefaults synchronize];
+}
 
-    NSArray *theQuestions = [responseString JSONValue];
-    self.questions = theQuestions;
 
-    [self updateQuestion:nil];
-    self.button.hidden = NO;
+
+- (void)processScrapResponse: (NSString *)response {
+    NSDictionary *data = [response JSONValue];
+    NSLog(@"answers id: %@", [data objectForKey:@"answersId"]);
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[data objectForKey:@"answersId"] forKey:@"answersId"];
+    [userDefaults synchronize];
 }
 
 - (IBAction)updateQuestion:(id)sender {
+    if (currentIndex > 0) {
+        NSMutableDictionary *answer = [[questions objectAtIndex: currentIndex - 1] mutableCopy];
+        [answer setObject:lastAnswer forKey:@"answer"];
+        [answers addObject:answer];
+    }
+
     if (currentIndex == questions.count - 1) {
-        self.button.titleLabel.text = @"Finish";
+        [button setTitle:@"Finish" forState:UIControlStateNormal];
     } else if (currentIndex == questions.count) {
-        [self finishSurvey];
+        //[self finishSurvey];
         return;
     }
 
@@ -147,24 +220,93 @@
 
 - (void)finishSurvey {
     NSLog(@"Finish Survey");
+    [userData setObject:answers forKey:@"questions"];
+
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *answersId = [userDefaults objectForKey:@"answersId"];
+    [userData setObject:answersId forKey:@"answersId"];
+
+    NSString *json = [userData JSONRepresentation];
+
+    NSLog(@"Json to server: %@", json);
+
+    NSString *urlString = [[NSString stringWithFormat:@"https://script.google.com/macros/s/AKfycbwpef4lya6GTyBiLn6tqIEldmGPgk4cbE4L0Nt1yaARin3YKq3o/exec?data=%@", json] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"url: %@", urlString);
+    NSURL *url = [NSURL URLWithString:urlString];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    [request setRequestMethod:@"POST"];
+    [request setTag:3];
+    request.delegate = self;
+    [request startAsynchronous];
 }
 
 - (IBAction)buttonClicked:(id)sender {
     switch ([sender tag]) {
         case 0:
-            NSLog(@"Yes");
+            lastAnswer = @"yes";
             break;
         case 1:
-            NSLog(@"No");
+            lastAnswer = @"no";
             break;
         default:
             NSLog(@"Unexpected tag %d", [sender tag]);
     }
 }
 
-- (void)requestFailed:(ASIHTTPRequest *)request
-{
+- (IBAction)sliderChanged:(id)sender {
+    lastAnswer = [NSString stringWithFormat:@"%f", self.slider.value];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request {
+    switch (request.tag) {
+        case 2:
+        {
+            // Use when fetching text data
+            NSString *responseString = [request responseString];
+            NSLog(@"reponse: %@", responseString);
+
+            NSArray *theQuestions = [responseString JSONValue];
+            NSMutableArray *t = [theQuestions mutableCopy];
+            diagnoseOk = [t lastObject];
+            [t removeLastObject];
+            diagnoseSick = [t lastObject];
+            [t removeLastObject];
+
+            self.questions = t;
+
+            [self updateQuestion:nil];
+            self.button.hidden = NO;
+        }
+            break;
+        case 3:
+            NSLog(@"Post request finished: %@", [request responseString]);
+            break;
+        case 4:
+        {
+            NSString *json = [request responseString];
+            NSLog(@"Scrap request returned JSON: %@", json);
+            [self processScrapResponse:json];
+            [self scrapDone];
+        }
+            break;
+    }
+
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request {
    NSError *error = [request error];
     NSLog(@"response failed: %@", [error debugDescription]);
+}
+
+- (IBAction)resetScrap:(id)sender {
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    [userDefaults removeObjectForKey:@"scrap"];
+//    [userDefaults synchronize];
+    AgreementViewController *viewController = [[AgreementViewController alloc] initWithNibName:@"AgreementViewController" bundle:nil];
+    viewController.delegate = self;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+
+
+    [self presentModalViewController:navigationController animated:YES];
 }
 @end

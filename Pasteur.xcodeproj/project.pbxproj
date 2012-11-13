@@ -23,6 +23,8 @@
 		89188CE0164ED8CC0045B36F /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89188CDF164ED8CC0045B36F /* Accounts.framework */; };
 		89188CE4164ED8E60045B36F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89188CE2164ED8E60045B36F /* Social.framework */; };
 		89188CE5164ED9430045B36F /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89188CE1164ED8E60045B36F /* AdSupport.framework */; };
+		893C61791651E48A004AC03B /* AgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 893C61771651E48A004AC03B /* AgreementViewController.m */; };
+		893C617A1651E48A004AC03B /* AgreementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 893C61781651E48A004AC03B /* AgreementViewController.xib */; };
 		894BD7F5165051C500F56D61 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894BD7F4165051C500F56D61 /* CFNetwork.framework */; };
 		894BD7F7165051D500F56D61 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894BD7F6165051D500F56D61 /* SystemConfiguration.framework */; };
 		894BD7F9165051DF00F56D61 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894BD7F8165051DF00F56D61 /* MobileCoreServices.framework */; };
@@ -67,6 +69,9 @@
 		89188CDF164ED8CC0045B36F /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		89188CE1164ED8E60045B36F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		89188CE2164ED8E60045B36F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		893C61761651E48A004AC03B /* AgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreementViewController.h; sourceTree = "<group>"; };
+		893C61771651E48A004AC03B /* AgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreementViewController.m; sourceTree = "<group>"; };
+		893C61781651E48A004AC03B /* AgreementViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AgreementViewController.xib; sourceTree = "<group>"; };
 		894BD7F4165051C500F56D61 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		894BD7F6165051D500F56D61 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		894BD7F8165051DF00F56D61 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -175,6 +180,9 @@
 				89188CD1164ED5C70045B36F /* ViewController.m */,
 				89188CD3164ED5C70045B36F /* ViewController.xib */,
 				89188CBF164ED5C60045B36F /* Supporting Files */,
+				893C61761651E48A004AC03B /* AgreementViewController.h */,
+				893C61771651E48A004AC03B /* AgreementViewController.m */,
+				893C61781651E48A004AC03B /* AgreementViewController.xib */,
 			);
 			path = Pasteur;
 			sourceTree = "<group>";
@@ -285,6 +293,7 @@
 				984B228F164F51730044A611 /* pasteur_lowres.png in Resources */,
 				984B2291164F54690044A611 /* pasteur_highres.png in Resources */,
 				984B2293164F563D0044A611 /* Default-568h@2x.png in Resources */,
+				893C617A1651E48A004AC03B /* AgreementViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +319,7 @@
 				894BD8281650584D00F56D61 /* SBJsonTokeniser.m in Sources */,
 				894BD8291650584D00F56D61 /* SBJsonUTF8Stream.m in Sources */,
 				894BD82A1650584D00F56D61 /* SBJsonWriter.m in Sources */,
+				893C61791651E48A004AC03B /* AgreementViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

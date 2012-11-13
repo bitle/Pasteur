@@ -11,10 +11,16 @@
 @interface ViewController : UIViewController <UIScrollViewDelegate> {
     UITextView *textView;
     NSArray *questions;
+    NSMutableArray *answers;
     NSUInteger currentIndex;
     UIView *buttons;
     UISlider *slider;
     UIButton *button;
+    NSMutableDictionary *userData;
+    NSString *lastAnswer;
+
+    NSString *diagnoseOk;
+    NSString *diagnoseSick;
 }
 
 @property (nonatomic, strong) IBOutlet UITextView *textView;
@@ -25,4 +31,6 @@
 
 - (IBAction)updateQuestion:(id)sender;
 - (IBAction)buttonClicked:(id)sender;
+- (IBAction)sliderChanged:(id)sender;
+- (IBAction)resetScrap:(id)sender;
 @end
