@@ -17,6 +17,7 @@
     UIView *buttons;
     UISlider *slider;
     UIButton *button;
+    UIButton *loginButton;
     NSMutableDictionary *userData;
     NSString *lastAnswer;
 
@@ -28,10 +29,12 @@
 @property (nonatomic, strong) IBOutlet UISlider *slider;
 @property (nonatomic, strong) IBOutlet UIView *buttons;
 @property (nonatomic, strong) IBOutlet UIButton *button;
+@property (nonatomic, strong) IBOutlet UIButton *loginButton;
 @property (strong) NSArray *questions;
 
 - (IBAction)updateQuestion:(id)sender;
 - (IBAction)buttonClicked:(id)sender;
 - (IBAction)sliderChanged:(id)sender;
 - (IBAction)resetScrap:(id)sender;
+- (IBAction)showAgreement:(id)sender;
 @end

@@ -18,14 +18,22 @@
 @synthesize buttons;
 @synthesize slider;
 @synthesize button;
+@synthesize loginButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     if (FBSession.activeSession.state != FBSessionStateCreatedTokenLoaded) {
         NSLog(@"Loggin in");
+        self.loginButton.hidden = NO;
+        self.buttons.hidden = YES;
+        self.slider.hidden = YES;
+        self.button.hidden = YES;
+        self.textView.hidden = YES;
     } else {
         NSLog(@"No login needed");
+        [self initSurvey];
+        [self requestFacebookSession];
     }
 
     /*
@@ -84,20 +92,6 @@
 
 
      */
-
-    [FBSession openActiveSessionWithReadPermissions:[NSArray arrayWithObjects:@"user_education_history", @"friends_education_history", nil] allowLoginUI:YES completionHandler:^(FBSession *session,
-                                                                             FBSessionState state,
-                                                                             NSError *error) {
-                                                             [self sessionStateChanged:session
-                                                                                 state:state
-                                                                                 error:error];
-                                                         }];
-
-    self.buttons.backgroundColor = [UIColor clearColor];
-    self.buttons.hidden = YES;
-
-    self.slider.hidden = YES;
-    self.button.hidden = YES;
 
     userData = [NSMutableDictionary dictionaryWithCapacity:3];
     answers = [NSMutableArray arrayWithCapacity:3];
@@ -276,6 +270,7 @@
 
             [self updateQuestion:nil];
             self.button.hidden = NO;
+            self.textView.hidden = NO;
         }
             break;
         case 3:
@@ -302,6 +297,19 @@
 //    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 //    [userDefaults removeObjectForKey:@"scrap"];
 //    [userDefaults synchronize];
+
+}
+
+- (void)agreementViewDone:(BOOL)isAgree {
+    NSLog(@"isAgree: %@", isAgree ? @"yes" : @"no");
+    [self dismissModalViewControllerAnimated:YES];
+    if (isAgree) {
+        [self initSurvey];
+        [self requestFacebookSession];
+    }
+}
+
+- (IBAction)showAgreement:(id)sender {
     AgreementViewController *viewController = [[AgreementViewController alloc] initWithNibName:@"AgreementViewController" bundle:nil];
     viewController.delegate = self;
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
@@ -310,9 +318,22 @@
     [self presentModalViewController:navigationController animated:YES];
 }
 
-- (void)agreementViewDone:(BOOL)isAgree {
-    NSLog(@"isAgree: %@", isAgree ? @"yes" : @"no");
-    [self dismissModalViewControllerAnimated:YES];
+-(void)initSurvey {
+    self.loginButton.hidden = YES;
+    self.buttons.backgroundColor = [UIColor clearColor];
+    self.buttons.hidden = YES;
+    self.slider.hidden = YES;
+    self.button.hidden = YES;
+    self.textView.hidden = YES;
+}
 
+-(void)requestFacebookSession {
+    [FBSession openActiveSessionWithReadPermissions:[NSArray arrayWithObjects:@"user_education_history", @"friends_education_history", nil] allowLoginUI:YES completionHandler:^(FBSession *session,
+                                                                                     FBSessionState state,
+                                                                                     NSError *error) {
+                                                                     [self sessionStateChanged:session
+                                                                                         state:state
+                                                                                         error:error];
+                                                                 }];
 }
 @end
