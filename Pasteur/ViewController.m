@@ -75,10 +75,14 @@
     UIImage *buttonImage = [[UIImage imageNamed:@"greyButton@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
 
-//    [saveButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
-//     [saveButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
-    [button1 setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    [button1 setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    [buttonSubmit setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [buttonSubmit setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+
+    UIImage *fb1 = [UIImage imageNamed:@"fb-login-button-small@2x.png"];
+    UIImage *fb2 = [UIImage imageNamed:@"fb-login-button-small-pressed@2x.png"];
+
+    [loginButton setBackgroundImage:fb1 forState:UIControlStateNormal];
+    [loginButton setBackgroundImage:fb2 forState:UIControlStateHighlighted];
 
     self.tempView.backgroundColor = [UIColor clearColor];
     self.scrollView.backgroundColor = [UIColor clearColor];

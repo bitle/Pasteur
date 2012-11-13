@@ -80,9 +80,10 @@
 		89D7D6A0165209AE00D5EFDA /* whiteButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D7D683165209AE00D5EFDA /* whiteButton@2x.png */; };
 		89D7D6A1165209AE00D5EFDA /* whiteButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D7D684165209AE00D5EFDA /* whiteButtonHighlight.png */; };
 		89D7D6A2165209AE00D5EFDA /* whiteButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D7D685165209AE00D5EFDA /* whiteButtonHighlight@2x.png */; };
+		89D7D6A516522A9700D5EFDA /* fb-login-button-small-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D7D6A316522A9700D5EFDA /* fb-login-button-small-pressed@2x.png */; };
+		89D7D6A616522A9700D5EFDA /* fb-login-button-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D7D6A416522A9700D5EFDA /* fb-login-button-small@2x.png */; };
 		984B228F164F51730044A611 /* pasteur_lowres.png in Resources */ = {isa = PBXBuildFile; fileRef = 984B228E164F51730044A611 /* pasteur_lowres.png */; };
 		984B2291164F54690044A611 /* pasteur_highres.png in Resources */ = {isa = PBXBuildFile; fileRef = 984B2290164F54690044A611 /* pasteur_highres.png */; };
-		984B2293164F563D0044A611 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 984B2292164F563D0044A611 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -179,6 +180,8 @@
 		89D7D683165209AE00D5EFDA /* whiteButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteButton@2x.png"; sourceTree = "<group>"; };
 		89D7D684165209AE00D5EFDA /* whiteButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButtonHighlight.png; sourceTree = "<group>"; };
 		89D7D685165209AE00D5EFDA /* whiteButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteButtonHighlight@2x.png"; sourceTree = "<group>"; };
+		89D7D6A316522A9700D5EFDA /* fb-login-button-small-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fb-login-button-small-pressed@2x.png"; sourceTree = "<group>"; };
+		89D7D6A416522A9700D5EFDA /* fb-login-button-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fb-login-button-small@2x.png"; sourceTree = "<group>"; };
 		984B228E164F51730044A611 /* pasteur_lowres.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pasteur_lowres.png; sourceTree = "<group>"; };
 		984B2290164F54690044A611 /* pasteur_highres.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pasteur_highres.png; sourceTree = "<group>"; };
 		984B2292164F563D0044A611 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 		890C82771651F07900BB9510 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				89D7D6A316522A9700D5EFDA /* fb-login-button-small-pressed@2x.png */,
+				89D7D6A416522A9700D5EFDA /* fb-login-button-small@2x.png */,
 				89D7D668165209AE00D5EFDA /* buttons */,
 				89D7D662165202A000D5EFDA /* whiteButton.png */,
 				89D7D666165203A000D5EFDA /* blueButton.png */,
@@ -432,7 +437,6 @@
 				89188CDE164ED87F0045B36F /* FacebookSDKResources.bundle in Resources */,
 				984B228F164F51730044A611 /* pasteur_lowres.png in Resources */,
 				984B2291164F54690044A611 /* pasteur_highres.png in Resources */,
-				984B2293164F563D0044A611 /* Default-568h@2x.png in Resources */,
 				893C617A1651E48A004AC03B /* AgreementViewController.xib in Resources */,
 				890C827F1651F08C00BB9510 /* GenBasB.ttf in Resources */,
 				890C82801651F08C00BB9510 /* GenBasBI.ttf in Resources */,
@@ -471,6 +475,8 @@
 				89D7D6A0165209AE00D5EFDA /* whiteButton@2x.png in Resources */,
 				89D7D6A1165209AE00D5EFDA /* whiteButtonHighlight.png in Resources */,
 				89D7D6A2165209AE00D5EFDA /* whiteButtonHighlight@2x.png in Resources */,
+				89D7D6A516522A9700D5EFDA /* fb-login-button-small-pressed@2x.png in Resources */,
+				89D7D6A616522A9700D5EFDA /* fb-login-button-small@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
