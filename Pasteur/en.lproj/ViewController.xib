@@ -91,7 +91,7 @@
 					<object class="IBUIView" id="406522749">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{0, 369}, {320, 153}}</string>
+						<string key="NSFrameSize">{320, 568}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="354884474"/>
@@ -176,7 +176,7 @@
 					<object class="IBUITextView" id="933178801">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{41, 20}, {238, 52}}</string>
+						<string key="NSFrame">{{41, 418}, {238, 52}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="926896224"/>
@@ -188,6 +188,10 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIBounces">NO</bool>
+						<bool key="IBUIScrollEnabled">NO</bool>
+						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
 						<string key="IBUIText">How do you feel overall?</string>
 						<reference key="IBUITextColor" ref="638053138"/>
@@ -202,7 +206,7 @@
 					<object class="IBUITextView" id="926896224">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{361, 20}, {238, 52}}</string>
+						<string key="NSFrame">{{361, 418}, {238, 52}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="360851848"/>
@@ -211,6 +215,10 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIBounces">NO</bool>
+						<bool key="IBUIScrollEnabled">NO</bool>
+						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
 						<string key="IBUIText">Are you feeling feverish?</string>
 						<reference key="IBUITextColor" ref="638053138"/>
@@ -225,7 +233,7 @@
 					<object class="IBUITextView" id="360851848">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{681, 20}, {238, 52}}</string>
+						<string key="NSFrame">{{681, 418}, {238, 52}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="114927005"/>
@@ -234,6 +242,10 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIBounces">NO</bool>
+						<bool key="IBUIScrollEnabled">NO</bool>
+						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
 						<string key="IBUIText">Do you have a cough or sore throat?</string>
 						<reference key="IBUITextColor" ref="638053138"/>
@@ -248,7 +260,7 @@
 					<object class="IBUITextView" id="114927005">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{1001, 20}, {238, 52}}</string>
+						<string key="NSFrame">{{1001, 418}, {238, 52}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="266430630"/>
@@ -257,6 +269,10 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIBounces">NO</bool>
+						<bool key="IBUIScrollEnabled">NO</bool>
+						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
 						<string key="IBUIText">Running or stuffy nose?</string>
 						<reference key="IBUITextColor" ref="638053138"/>
@@ -271,7 +287,7 @@
 					<object class="IBUITextView" id="266430630">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{1321, 20}, {238, 52}}</string>
+						<string key="NSFrame">{{1321, 418}, {238, 52}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="608599128"/>
@@ -280,6 +296,10 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIBounces">NO</bool>
+						<bool key="IBUIScrollEnabled">NO</bool>
+						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
 						<string key="IBUIText">How about a headache, or body aches?</string>
 						<reference key="IBUITextColor" ref="638053138"/>
@@ -294,7 +314,7 @@
 					<object class="IBUITextView" id="608599128">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{1641, 20}, {238, 52}}</string>
+						<string key="NSFrame">{{1641, 418}, {238, 52}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1024232161"/>
@@ -303,6 +323,10 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIBounces">NO</bool>
+						<bool key="IBUIScrollEnabled">NO</bool>
+						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
 						<string key="IBUIText">Are you experiencing chills?</string>
 						<reference key="IBUITextColor" ref="638053138"/>
@@ -317,7 +341,7 @@
 					<object class="IBUITextView" id="1024232161">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{1961, 20}, {238, 52}}</string>
+						<string key="NSFrame">{{1961, 418}, {238, 52}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="439514115"/>
@@ -326,6 +350,10 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIBounces">NO</bool>
+						<bool key="IBUIScrollEnabled">NO</bool>
+						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
 						<string key="IBUIText">Do you feel tired?</string>
 						<reference key="IBUITextColor" ref="638053138"/>
@@ -340,7 +368,7 @@
 					<object class="IBUITextView" id="439514115">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{2281, 20}, {238, 52}}</string>
+						<string key="NSFrame">{{2281, 418}, {238, 52}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="657333511"/>
@@ -349,6 +377,10 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIBounces">NO</bool>
+						<bool key="IBUIScrollEnabled">NO</bool>
+						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 						<bool key="IBUIEditable">NO</bool>
 						<string key="IBUIText">Any nausea, vomiting, or diarrhea?</string>
 						<reference key="IBUITextColor" ref="638053138"/>
@@ -363,7 +395,7 @@
 					<object class="IBUITextView" id="657333511">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{2601, 20}, {238, 52}}</string>
+						<string key="NSFrame">{{2601, 418}, {238, 52}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="42689816"/>
@@ -372,6 +404,10 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<bool key="IBUIBounces">NO</bool>
+						<bool key="IBUIScrollEnabled">NO</bool>
+						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 						<string key="IBUIText">That is all I need to know.</string>
 						<reference key="IBUITextColor" ref="638053138"/>
 						<int key="IBUITextAlignment">1</int>
@@ -385,7 +421,7 @@
 					<object class="IBUIButton" id="1026703754">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">269</int>
-						<string key="NSFrame">{{2684, 91}, {73, 44}}</string>
+						<string key="NSFrame">{{2684, 489}, {73, 44}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -416,7 +452,7 @@
 					<object class="IBUISegmentedControl" id="1048415963">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{400, 91}, {161, 44}}</string>
+						<string key="NSFrame">{{400, 489}, {161, 44}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="518269186"/>
@@ -449,7 +485,7 @@
 					<object class="IBUISegmentedControl" id="518269186">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{720, 91}, {161, 44}}</string>
+						<string key="NSFrame">{{720, 489}, {161, 44}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="129513949"/>
@@ -482,7 +518,7 @@
 					<object class="IBUISegmentedControl" id="129513949">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{1040, 91}, {161, 44}}</string>
+						<string key="NSFrame">{{1040, 489}, {161, 44}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1051553033"/>
@@ -515,7 +551,7 @@
 					<object class="IBUISegmentedControl" id="1051553033">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{1360, 91}, {161, 44}}</string>
+						<string key="NSFrame">{{1360, 489}, {161, 44}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="527565208"/>
@@ -548,7 +584,7 @@
 					<object class="IBUISegmentedControl" id="527565208">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{1680, 91}, {161, 44}}</string>
+						<string key="NSFrame">{{1680, 489}, {161, 44}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="299432506"/>
@@ -581,7 +617,7 @@
 					<object class="IBUISegmentedControl" id="299432506">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{2000, 91}, {161, 44}}</string>
+						<string key="NSFrame">{{2000, 489}, {161, 44}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="169988396"/>
@@ -614,7 +650,7 @@
 					<object class="IBUISegmentedControl" id="169988396">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{2320, 91}, {161, 44}}</string>
+						<string key="NSFrame">{{2320, 489}, {161, 44}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1026703754"/>
@@ -646,8 +682,8 @@
 					</object>
 					<object class="IBUISegmentedControl" id="42689816">
 						<reference key="NSNextResponder" ref="475133581"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{41, 91}, {238, 44}}</string>
+						<int key="NSvFlags">264</int>
+						<string key="NSFrame">{{41, 489}, {238, 44}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1048415963"/>
@@ -684,7 +720,7 @@
 						</array>
 					</object>
 				</array>
-				<string key="NSFrameSize">{320, 169}</string>
+				<string key="NSFrameSize">{320, 568}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="933178801"/>
@@ -1021,14 +1057,14 @@
 						<int key="objectID">154</int>
 						<reference key="object" ref="475133581"/>
 						<array class="NSMutableArray" key="children">
+							<reference ref="933178801"/>
+							<reference ref="926896224"/>
 							<reference ref="360851848"/>
 							<reference ref="114927005"/>
 							<reference ref="266430630"/>
 							<reference ref="608599128"/>
 							<reference ref="1024232161"/>
 							<reference ref="439514115"/>
-							<reference ref="933178801"/>
-							<reference ref="926896224"/>
 							<reference ref="657333511"/>
 							<reference ref="1026703754"/>
 							<reference ref="1048415963"/>
