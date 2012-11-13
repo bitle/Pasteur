@@ -86,6 +86,7 @@
 
     self.tempView.backgroundColor = [UIColor clearColor];
     self.scrollView.backgroundColor = [UIColor clearColor];
+    NSLog(@"Original content offset: %f", scrollView.contentOffset.x);
 
     userData = [NSMutableDictionary dictionaryWithCapacity:3];
     answers = [NSMutableArray arrayWithCapacity:8];
@@ -217,9 +218,11 @@
         [answers replaceObjectAtIndex:currentIndex withObject: [NSString stringWithFormat: @"%d", self.segmentedControl1.selectedSegmentIndex]];
     }
     currentIndex++;
+    NSLog(@"moving page in updateQuestion: %d", currentIndex);
     CGRect frame = self.scrollView.frame;
     frame.origin.x += frame.size.width*currentIndex;
     frame.origin.y = 0;
+    NSLog(@"New offset: %f", frame.origin.x);
     [self.scrollView scrollRectToVisible:frame animated:YES];
 }
 
@@ -334,13 +337,14 @@
     self.tempView.hidden = NO;
 
 
-    self.scrollView.contentSize = CGSizeMake(2880.0, scrollView.frame.size.height);
+    self.scrollView.contentSize = CGSizeMake(9*scrollView.frame.size.width, scrollView.frame.size.height);
     self.scrollView.pagingEnabled = YES;
     self.scrollView.delegate = self;
     [self.tempView addSubview: self.scrollView];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    NSLog(@"scrollViewWillBeginDragging");
     isButton = NO;
 }
 
@@ -350,7 +354,7 @@
     }
     CGFloat pageWidth = scrollView.frame.size.width;
     currentIndex = (NSUInteger)(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1);
-    NSLog(@"scrollViewDidScroll: %d", currentIndex);
+    NSLog(@"scrollViewDidScroll to page %d with offset %f", currentIndex, scrollView.contentOffset.x);
 }
 
 
@@ -365,15 +369,17 @@
 }
 
 - (void)reset {
+    NSLog(@"reset");
     currentIndex = 0;
     for (int i = 0; i < 8; i++) {
         [answers replaceObjectAtIndex:i withObject:@""];
     }
 
+    isButton = YES;
     CGRect frame = self.scrollView.frame;
-    frame.origin.x += frame.size.width*currentIndex;
+    frame.origin.x = 0;
     frame.origin.y = 0;
-    [self.scrollView scrollRectToVisible:frame animated:YES];
+    [self.scrollView scrollRectToVisible:frame animated:NO];
 
     self.tempView.hidden = NO;
     self.label.hidden = YES;
