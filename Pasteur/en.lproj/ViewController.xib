@@ -127,7 +127,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<string key="IBUINormalTitle">         Sign In</string>
 						<reference key="IBUINormalTitleColor" ref="638053138"/>
-						<object class="NSColor" key="IBUINormalTitleShadowColor" id="154302151">
+						<object class="NSColor" key="IBUINormalTitleShadowColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
 						</object>
@@ -431,23 +431,19 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<int key="IBUIButtonType">1</int>
+						<string key="IBUITitleShadowOffset">{0, 1}</string>
 						<string key="IBUINormalTitle">Submit</string>
 						<reference key="IBUIHighlightedTitleColor" ref="638053138"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+							<bytes key="NSRGB">MC42MDcyMjI1NzY1IDAuNjA3MjIyNTc2NSAwLjYwNzIyMjU3NjUAA</bytes>
 						</object>
-						<reference key="IBUINormalTitleShadowColor" ref="154302151"/>
+						<reference key="IBUINormalTitleShadowColor" ref="638053138"/>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
-							<double key="pointSize">15</double>
+							<int key="size">2</int>
 						</object>
-						<object class="NSFont" key="IBUIFont">
-							<string key="NSName">Helvetica-Bold</string>
-							<double key="NSSize">15</double>
-							<int key="NSfFlags">16</int>
-						</object>
+						<reference key="IBUIFont" ref="60692062"/>
 					</object>
 					<object class="IBUISegmentedControl" id="1048415963">
 						<reference key="NSNextResponder" ref="475133581"/>
@@ -720,7 +716,7 @@
 						</array>
 					</object>
 				</array>
-				<string key="NSFrameSize">{320, 568}</string>
+				<string key="NSFrameSize">{2880, 568}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="933178801"/>
@@ -1066,7 +1062,6 @@
 							<reference ref="1024232161"/>
 							<reference ref="439514115"/>
 							<reference ref="657333511"/>
-							<reference ref="1026703754"/>
 							<reference ref="1048415963"/>
 							<reference ref="518269186"/>
 							<reference ref="129513949"/>
@@ -1075,6 +1070,7 @@
 							<reference ref="299432506"/>
 							<reference ref="169988396"/>
 							<reference ref="42689816"/>
+							<reference ref="1026703754"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -1225,7 +1221,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">277</int>
+			<int key="maxID">278</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
