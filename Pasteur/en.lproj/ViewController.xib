@@ -421,7 +421,7 @@
 					<object class="IBUIButton" id="1026703754">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">269</int>
-						<string key="NSFrame">{{2684, 474}, {73, 44}}</string>
+						<string key="NSFrame">{{2673, 478}, {95, 36}}</string>
 						<reference key="NSSuperview" ref="475133581"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -431,6 +431,10 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
+						<double key="IBUIContentEdgeInsets.top">0.0</double>
+						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
+						<double key="IBUIContentEdgeInsets.left">0.0</double>
+						<double key="IBUIContentEdgeInsets.right">-2</double>
 						<string key="IBUITitleShadowOffset">{0, 1}</string>
 						<string key="IBUINormalTitle">Submit</string>
 						<reference key="IBUIHighlightedTitleColor" ref="638053138"/>
