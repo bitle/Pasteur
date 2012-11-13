@@ -309,4 +309,10 @@
 
     [self presentModalViewController:navigationController animated:YES];
 }
+
+- (void)agreementViewDone:(BOOL)isAgree {
+    NSLog(@"isAgree: %@", isAgree ? @"yes" : @"no");
+    [self dismissModalViewControllerAnimated:YES];
+
+}
 @end

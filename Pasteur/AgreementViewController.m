@@ -26,7 +26,7 @@
 
     UIBarButtonItem *agreeButton = [[UIBarButtonItem alloc] initWithTitle:@"Agree" style:UIBarButtonItemStyleBordered target:self action:@selector(buttonAgree:)];
     self.navigationItem.rightBarButtonItem = agreeButton;
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(buttonAgree:)];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(buttonCancel:)];
     self.navigationItem.leftBarButtonItem = cancelButton;
 
     NSURL *url = [NSURL URLWithString:@"https://docs.google.com/document/pub?id=1stHetmKGzaiHdE4VWsokpFnQvi99K3KEEVoaJ4XCbiQ"];
@@ -35,6 +35,10 @@
 }
 
 - (void)buttonAgree:(id)sender {
-    [delegate dismissModalViewControllerAnimated:YES];
+    [delegate agreementViewDone: YES];
+}
+
+- (void)buttonCancel:(id)sender {
+    [delegate agreementViewDone: NO];
 }
 @end

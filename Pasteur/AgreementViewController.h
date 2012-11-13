@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol AgreementViewDelegate
+- (void)agreementViewDone:(BOOL)isAgree;
+@end
+
 @interface AgreementViewController : UIViewController {
     UIWebView *webView;
-    id delegate;
+    id<AgreementViewDelegate> delegate;
 }
 
 @property (nonatomic, strong) IBOutlet UIWebView *webView;

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AgreementViewController.h"
 
-@interface ViewController : UIViewController <UIScrollViewDelegate> {
+@interface ViewController : UIViewController <UIScrollViewDelegate, AgreementViewDelegate> {
     UITextView *textView;
     NSArray *questions;
     NSMutableArray *answers;
