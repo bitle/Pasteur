@@ -53,6 +53,14 @@
     UITextView *textView8;
     UITextView *textView9;
 
+    UISegmentedControl *segmentedControl1;
+    UISegmentedControl *segmentedControl2;
+    UISegmentedControl *segmentedControl3;
+    UISegmentedControl *segmentedControl4;
+    UISegmentedControl *segmentedControl5;
+    UISegmentedControl *segmentedControl6;
+    UISegmentedControl *segmentedControl7;
+    UISegmentedControl *segmentedControl8;
 }
 
 @property (nonatomic, strong) IBOutlet UISlider *slider;
@@ -90,6 +98,15 @@
 @property (nonatomic, strong) IBOutlet UITextView *textView7;
 @property (nonatomic, strong) IBOutlet UITextView *textView8;
 @property (nonatomic, strong) IBOutlet UITextView *textView9;
+
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl1;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl2;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl3;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl4;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl5;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl6;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl7;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl8;
 
 - (IBAction)updateQuestion:(id)sender;
 - (IBAction)buttonClicked:(id)sender;

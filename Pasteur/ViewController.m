@@ -48,6 +48,15 @@
 @synthesize textView8;
 @synthesize textView9;
 
+@synthesize segmentedControl1;
+@synthesize segmentedControl2;
+@synthesize segmentedControl3;
+@synthesize segmentedControl4;
+@synthesize segmentedControl5;
+@synthesize segmentedControl6;
+@synthesize segmentedControl7;
+@synthesize segmentedControl8;
+
 
 
 - (void)viewDidLoad {
@@ -91,6 +100,14 @@
     self.textView8.backgroundColor = [UIColor clearColor];
     self.textView9.backgroundColor = [UIColor clearColor];
 
+    [segmentedControl1 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl2 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl3 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl4 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl5 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl6 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl7 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl8 setSelectedSegmentIndex:UISegmentedControlNoSegment];
 }
 
 - (void)sendScrapRequest:(NSString *)token forUser: (NSString *)name withId: (NSString *)userId {
@@ -183,14 +200,16 @@
 
 - (IBAction)updateQuestion:(id)sender {
     if ([sender tag] == 0) {
-        [answers replaceObjectAtIndex:currentIndex withObject:@"no"];
+        UISegmentedControl *s = sender;
+        NSString *a = s.selectedSegmentIndex == 0 ? @"yes" : @"no";
+        [answers replaceObjectAtIndex:currentIndex withObject:a];
     } else if ([sender tag] == 1) {
-        [answers replaceObjectAtIndex:currentIndex withObject:@"yes"];
+        //[answers replaceObjectAtIndex:currentIndex withObject:@"yes"];
     } else if ([sender tag] == 2) {
         NSLog(@"answers: %@", answers);
         [self finishSurvey];
     } else if ([sender tag] == 3) {
-        [answers replaceObjectAtIndex:currentIndex withObject: [NSString stringWithFormat: @"%f", self.slider.value]];
+        [answers replaceObjectAtIndex:currentIndex withObject: [NSString stringWithFormat: @"%d", self.segmentedControl1.selectedSegmentIndex]];
     }
     currentIndex++;
     CGRect frame = self.scrollView.frame;
@@ -346,5 +365,14 @@
 
     self.tempView.hidden = NO;
     self.label.hidden = YES;
+
+    [segmentedControl1 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl2 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl3 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl4 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl5 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl6 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl7 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    [segmentedControl8 setSelectedSegmentIndex:UISegmentedControlNoSegment];
 }
 @end
