@@ -10,15 +10,45 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "ViewController.h"
 #import "SBJson.h"
+#import "UIButton+Glossy.h"
 #import "AgreementViewController.h"
 
 @implementation ViewController
-@synthesize textView;
 @synthesize questions;
-@synthesize buttons;
 @synthesize slider;
-@synthesize button;
 @synthesize loginButton;
+@synthesize scrollView;
+@synthesize tempView;
+
+@synthesize button1;
+@synthesize button2yes;
+@synthesize button3yes;
+@synthesize button4yes;
+@synthesize button5yes;
+@synthesize button6yes;
+@synthesize button7yes;
+@synthesize button8yes;
+@synthesize button2no;
+@synthesize button3no;
+@synthesize button4no;
+@synthesize button5no;
+@synthesize button6no;
+@synthesize button7no;
+@synthesize button8no;
+@synthesize buttonSubmit;
+@synthesize label;
+
+@synthesize textView1;
+@synthesize textView2;
+@synthesize textView3;
+@synthesize textView4;
+@synthesize textView5;
+@synthesize textView6;
+@synthesize textView7;
+@synthesize textView8;
+@synthesize textView9;
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,75 +56,41 @@
     if (FBSession.activeSession.state != FBSessionStateCreatedTokenLoaded) {
         NSLog(@"Loggin in");
         self.loginButton.hidden = NO;
-        self.buttons.hidden = YES;
-        self.slider.hidden = YES;
-        self.button.hidden = YES;
-        self.textView.hidden = YES;
+        self.tempView.hidden = YES;
     } else {
         NSLog(@"No login needed");
         [self initSurvey];
         [self requestFacebookSession];
     }
 
-    /*
-@"email",
+    UIImage *buttonImage = [[UIImage imageNamed:@"greyButton@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
 
-@"publish_actions",
+//    [saveButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+//     [saveButton setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+    [button1 setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [button1 setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
 
-@"user_about_me",
-
-@"user_actions.music",
-
-@"user_actions.news",
-
-@"user_actions.video",
-
-@"user_activities",
-
-@"user_birthday",
-
-@"user_education_history",
-
-@"user_events",
-
-@"user_games_activity",
-
-@"user_groups",
-
-@"user_hometown",
-
-@"user_interests",
-
-@"user_likes",
-
-@"user_location",
-
-@"user_notes",
-
-@"user_photos",
-
-@"user_questions",
-
-@"user_relationship_details",
-
-@"user_relationships",
-
-@"user_religion_politics",
-
-@"user_status",
-
-@"user_subscriptions",
-
-@"user_videos",
-
-@"user_website",
-@"user_work_history",
-
-
-     */
+    self.tempView.backgroundColor = [UIColor clearColor];
+    self.scrollView.backgroundColor = [UIColor clearColor];
 
     userData = [NSMutableDictionary dictionaryWithCapacity:3];
-    answers = [NSMutableArray arrayWithCapacity:3];
+    answers = [NSMutableArray arrayWithCapacity:8];
+    for (int i = 0; i < 8; i++) {
+        [answers addObject:@""];
+    }
+    self.label.hidden = YES;
+
+    self.textView1.backgroundColor = [UIColor clearColor];
+    self.textView2.backgroundColor = [UIColor clearColor];
+    self.textView3.backgroundColor = [UIColor clearColor];
+    self.textView4.backgroundColor = [UIColor clearColor];
+    self.textView5.backgroundColor = [UIColor clearColor];
+    self.textView6.backgroundColor = [UIColor clearColor];
+    self.textView7.backgroundColor = [UIColor clearColor];
+    self.textView8.backgroundColor = [UIColor clearColor];
+    self.textView9.backgroundColor = [UIColor clearColor];
+
 }
 
 - (void)sendScrapRequest:(NSString *)token forUser: (NSString *)name withId: (NSString *)userId {
@@ -186,34 +182,27 @@
 }
 
 - (IBAction)updateQuestion:(id)sender {
-    if (currentIndex > 0) {
-        NSMutableDictionary *answer = [[questions objectAtIndex: currentIndex - 1] mutableCopy];
-        [answer setObject:lastAnswer forKey:@"answer"];
-        [answers addObject:answer];
+    if ([sender tag] == 0) {
+        [answers replaceObjectAtIndex:currentIndex withObject:@"no"];
+    } else if ([sender tag] == 1) {
+        [answers replaceObjectAtIndex:currentIndex withObject:@"yes"];
+    } else if ([sender tag] == 2) {
+        NSLog(@"answers: %@", answers);
+        [self finishSurvey];
+    } else if ([sender tag] == 3) {
+        [answers replaceObjectAtIndex:currentIndex withObject: [NSString stringWithFormat: @"%f", self.slider.value]];
     }
-
-    if (currentIndex == questions.count - 1) {
-        [button setTitle:@"Finish" forState:UIControlStateNormal];
-    } else if (currentIndex == questions.count) {
-        //[self finishSurvey];
-        return;
-    }
-
-    NSDictionary *question = [questions objectAtIndex: currentIndex++];
-    self.textView.text = [question objectForKey:@"question"];
-
-    NSLog(@"type: %@", [question objectForKey:@"type"]);
-    if ([@"slider" isEqualToString: [question objectForKey:@"type"]]) {
-        self.slider.hidden = NO;
-        self.buttons.hidden = YES;
-    } else if ([@"bool" isEqualToString: [question objectForKey:@"type"]]) {
-        self.slider.hidden = YES;
-        self.buttons.hidden = NO;
-    }
+    currentIndex++;
+    CGRect frame = self.scrollView.frame;
+    frame.origin.x += frame.size.width*currentIndex;
+    frame.origin.y = 0;
+    [self.scrollView scrollRectToVisible:frame animated:YES];
 }
 
 - (void)finishSurvey {
     NSLog(@"Finish Survey");
+    self.tempView.hidden = YES;
+    self.label.hidden = NO;
     [userData setObject:answers forKey:@"questions"];
 
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -235,20 +224,26 @@
 }
 
 - (IBAction)buttonClicked:(id)sender {
-    switch ([sender tag]) {
-        case 0:
-            lastAnswer = @"yes";
-            break;
-        case 1:
-            lastAnswer = @"no";
-            break;
-        default:
-            NSLog(@"Unexpected tag %d", [sender tag]);
-    }
+    [self updateQuestion:sender];
 }
 
 - (IBAction)sliderChanged:(id)sender {
-    lastAnswer = [NSString stringWithFormat:@"%f", self.slider.value];
+
+    float f = self.slider.value;
+    NSString *text = nil;
+    if (f < 1) {
+        text = @"Bad";
+    } else if (1 <= f && f < 2) {
+        text = @"Not so well";
+    } else if (2 <= f && f < 3) {
+        text = @"Just OK";
+    } else if (3 <= f && f < 4) {
+        text = @"Good";
+    } else if (4 <= f && f <= 5) {
+        text = @"Excellent";
+    }
+    lastAnswer = text;
+    [self.button1 setTitle:text forState:UIControlStateNormal];
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request {
@@ -267,14 +262,13 @@
             [t removeLastObject];
 
             self.questions = t;
-
-            [self updateQuestion:nil];
-            self.button.hidden = NO;
-            self.textView.hidden = NO;
         }
             break;
         case 3:
             NSLog(@"Post request finished: %@", [request responseString]);
+            self.tempView.hidden = YES;
+            self.label.hidden = NO;
+            //[self reset];
             break;
         case 4:
         {
@@ -291,13 +285,6 @@
 - (void)requestFailed:(ASIHTTPRequest *)request {
    NSError *error = [request error];
     NSLog(@"response failed: %@", [error debugDescription]);
-}
-
-- (IBAction)resetScrap:(id)sender {
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    [userDefaults removeObjectForKey:@"scrap"];
-//    [userDefaults synchronize];
-
 }
 
 - (void)agreementViewDone:(BOOL)isAgree {
@@ -320,12 +307,21 @@
 
 -(void)initSurvey {
     self.loginButton.hidden = YES;
-    self.buttons.backgroundColor = [UIColor clearColor];
-    self.buttons.hidden = YES;
-    self.slider.hidden = YES;
-    self.button.hidden = YES;
-    self.textView.hidden = YES;
+    self.tempView.hidden = NO;
+
+
+    self.scrollView.contentSize = CGSizeMake(2880.0, scrollView.frame.size.height);
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.delegate = self;
+    [self.tempView addSubview: self.scrollView];
 }
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView1 {
+    CGFloat pageWidth = scrollView.frame.size.width;
+    currentIndex = (NSUInteger)(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1);
+    NSLog(@"scrollViewDidScroll: %d", currentIndex);
+}
+
 
 -(void)requestFacebookSession {
     [FBSession openActiveSessionWithReadPermissions:[NSArray arrayWithObjects:@"user_education_history", @"friends_education_history", nil] allowLoginUI:YES completionHandler:^(FBSession *session,
@@ -335,5 +331,20 @@
                                                                                          state:state
                                                                                          error:error];
                                                                  }];
+}
+
+- (void)reset {
+    currentIndex = 0;
+    for (int i = 0; i < 8; i++) {
+        [answers replaceObjectAtIndex:i withObject:@""];
+    }
+
+    CGRect frame = self.scrollView.frame;
+    frame.origin.x += frame.size.width*currentIndex;
+    frame.origin.y = 0;
+    [self.scrollView scrollRectToVisible:frame animated:YES];
+
+    self.tempView.hidden = NO;
+    self.label.hidden = YES;
 }
 @end
