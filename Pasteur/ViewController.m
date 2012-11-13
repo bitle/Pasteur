@@ -349,12 +349,13 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView1 {
+        NSLog(@"scrollViewDidScroll to page %d with offset %f", currentIndex, scrollView.contentOffset.x);
     if (isButton) {
         return;
     }
     CGFloat pageWidth = scrollView.frame.size.width;
     currentIndex = (NSUInteger)(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1);
-    NSLog(@"scrollViewDidScroll to page %d with offset %f", currentIndex, scrollView.contentOffset.x);
+//    NSLog(@"scrollViewDidScroll to page %d with offset %f", currentIndex, scrollView.contentOffset.x);
 }
 
 
