@@ -18,6 +18,7 @@
     UIButton *loginButton;
     NSMutableDictionary *userData;
     NSString *lastAnswer;
+    BOOL isButton;
 
     NSString *diagnoseOk;
     NSString *diagnoseSick;

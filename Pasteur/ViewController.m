@@ -203,6 +203,7 @@
 }
 
 - (IBAction)updateQuestion:(id)sender {
+    isButton = YES;
     if ([sender tag] == 0) {
         UISegmentedControl *s = sender;
         NSString *a = s.selectedSegmentIndex == 0 ? @"yes" : @"no";
@@ -339,7 +340,14 @@
     [self.tempView addSubview: self.scrollView];
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    isButton = NO;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView1 {
+    if (isButton) {
+        return;
+    }
     CGFloat pageWidth = scrollView.frame.size.width;
     currentIndex = (NSUInteger)(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1);
     NSLog(@"scrollViewDidScroll: %d", currentIndex);
