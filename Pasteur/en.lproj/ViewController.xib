@@ -404,7 +404,7 @@
 						<bool key="IBUIScrollEnabled">NO</bool>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
-						<string key="IBUIText">That is all I need to know.</string>
+						<string key="IBUIText">That would be all for now.</string>
 						<reference key="IBUITextColor" ref="638053138"/>
 						<int key="IBUITextAlignment">1</int>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
