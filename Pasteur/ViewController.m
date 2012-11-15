@@ -7,13 +7,28 @@
 //
 
 #import <ASIHTTPRequest/ASIHTTPRequest.h>
+#import <CoreLocation/CoreLocation.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "ViewController.h"
 #import "SBJson.h"
 #import "UIButton+Glossy.h"
 #import "AgreementViewController.h"
 
+@implementation CLLocation (Strings)
+
+- (NSString *)localizedCoordinateString {
+    if (self.horizontalAccuracy < 0) {
+        return @"Data Unavailable";
+    }
+    
+    return [NSString stringWithFormat:@"{lat: %f, lon: %f}", self.coordinate.latitude, self.coordinate.longitude];
+}
+
+@end
+
 @implementation ViewController
+@synthesize bestEffortAtLocation;
+@synthesize locationManager;
 @synthesize questions;
 @synthesize slider;
 @synthesize loginButton;
@@ -113,6 +128,8 @@
     [segmentedControl6 setSelectedSegmentIndex:UISegmentedControlNoSegment];
     [segmentedControl7 setSelectedSegmentIndex:UISegmentedControlNoSegment];
     [segmentedControl8 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+    
+    [self startLocationTracker];
 }
 
 - (void)sendScrapRequest:(NSString *)token forUser: (NSString *)name withId: (NSString *)userId {
@@ -235,6 +252,13 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *answersId = [userDefaults objectForKey:@"answersId"];
     [userData setObject:answersId forKey:@"answersId"];
+    
+    NSMutableDictionary *cords = [NSMutableDictionary dictionaryWithCapacity:2];
+
+    [cords setObject: [NSNumber numberWithDouble:self.bestEffortAtLocation.coordinate.latitude] forKey:@"lat"];
+    [cords setObject:[NSNumber numberWithDouble:self.bestEffortAtLocation.coordinate.longitude] forKey:@"lon"];
+    
+    [userData setObject: cords forKey:@"cord"];
 
     NSString *json = [userData JSONRepresentation];
 
@@ -394,4 +418,67 @@
     [segmentedControl7 setSelectedSegmentIndex:UISegmentedControlNoSegment];
     [segmentedControl8 setSelectedSegmentIndex:UISegmentedControlNoSegment];
 }
+
+- (void)startLocationTracker {
+    NSLog(@"startLocationTracker");
+    self.locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    [locationManager startUpdatingLocation];
+}
+
+
+#pragma mark - Location Delegate
+/*
+ * We want to get and store a location measurement that meets the desired accuracy. For this example, we are
+ *      going to use horizontal accuracy as the deciding factor. In other cases, you may wish to use vertical
+ *      accuracy, or both together.
+ */
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    // store all of the measurements, just so we can see what kind of data we might receive
+    // test the age of the location measurement to determine if the measurement is cached
+    // in most cases you will not want to rely on cached measurements
+    NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
+    if (locationAge > 5.0) return;
+    // test that the horizontal accuracy does not indicate an invalid measurement
+    if (newLocation.horizontalAccuracy < 0) return;
+    // test the measurement to see if it is more accurate than the previous measurement
+    if (bestEffortAtLocation == nil || bestEffortAtLocation.horizontalAccuracy > newLocation.horizontalAccuracy) {
+        // store the location as the "best effort"
+        self.bestEffortAtLocation = newLocation;
+        NSLog(@"Got new location: %@", [newLocation localizedCoordinateString]);
+        // test the measurement to see if it meets the desired accuracy
+        //
+        // IMPORTANT!!! kCLLocationAccuracyBest should not be used for comparison with location coordinate or altitidue
+        // accuracy because it is a negative value. Instead, compare against some predetermined "real" measure of
+        // acceptable accuracy, or depend on the timeout to stop updating. This sample depends on the timeout.
+        //
+        if (newLocation.horizontalAccuracy <= locationManager.desiredAccuracy) {
+            // we have a measurement that meets our requirements, so we can stop updating the location
+            //
+            // IMPORTANT!!! Minimize power usage by stopping the location manager as soon as possible.
+            //
+            [self stopUpdatingLocation];
+            // we can also cancel our previous performSelector:withObject:afterDelay: - it's no longer necessary
+            [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(stopUpdatingLocation:) object:nil];
+        }
+    }
+}
+
+- (void)stopUpdatingLocation {
+    NSLog(@"stopUpdatingLocation");
+    [locationManager stopUpdatingLocation];
+    locationManager.delegate = nil;
+    self.locationManager = nil;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    // The location "unknown" error simply means the manager is currently unable to get the location.
+    // We can ignore this error for the scenario of getting a single location fix, because we already have a
+    // timeout that will stop the location manager to save power.
+    if ([error code] != kCLErrorLocationUnknown) {
+        [self stopUpdatingLocation];
+    }
+}
+
 @end

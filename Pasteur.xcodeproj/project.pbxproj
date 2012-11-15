@@ -47,6 +47,7 @@
 		894BD8281650584D00F56D61 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 894BD81A1650584D00F56D61 /* SBJsonTokeniser.m */; };
 		894BD8291650584D00F56D61 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 894BD81C1650584D00F56D61 /* SBJsonUTF8Stream.m */; };
 		894BD82A1650584D00F56D61 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 894BD81E1650584D00F56D61 /* SBJsonWriter.m */; };
+		894C7BDB1654652B0085391A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 894C7BDA1654652B0085391A /* CoreLocation.framework */; };
 		89D7D65D1651FAC800D5EFDA /* pasteur_backgrond_retina4.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D7D65C1651FAC800D5EFDA /* pasteur_backgrond_retina4.png */; };
 		89D7D6611652007100D5EFDA /* UIButton+Glossy.m in Sources */ = {isa = PBXBuildFile; fileRef = 89D7D6601652007100D5EFDA /* UIButton+Glossy.m */; };
 		89D7D663165202A000D5EFDA /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 89D7D662165202A000D5EFDA /* whiteButton.png */; };
@@ -146,6 +147,7 @@
 		894BD81C1650584D00F56D61 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		894BD81D1650584D00F56D61 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		894BD81E1650584D00F56D61 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		894C7BDA1654652B0085391A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		89D7D65C1651FAC800D5EFDA /* pasteur_backgrond_retina4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pasteur_backgrond_retina4.png; sourceTree = "<group>"; };
 		89D7D65F1652005300D5EFDA /* UIButton+Glossy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+Glossy.h"; sourceTree = "<group>"; };
 		89D7D6601652007100D5EFDA /* UIButton+Glossy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Glossy.m"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894C7BDB1654652B0085391A /* CoreLocation.framework in Frameworks */,
 				894BD7FB1650520F00F56D61 /* libz.dylib in Frameworks */,
 				89188CBD164ED5C60045B36F /* CoreGraphics.framework in Frameworks */,
 				894BD7F9165051DF00F56D61 /* MobileCoreServices.framework in Frameworks */,
@@ -239,6 +242,7 @@
 		89188CA9164ED5C60045B36F = {
 			isa = PBXGroup;
 			children = (
+				894C7BDA1654652B0085391A /* CoreLocation.framework */,
 				890C82771651F07900BB9510 /* Resources */,
 				894BD8051650584D00F56D61 /* json-parser */,
 				894BD7FF1650566E00F56D61 /* ASIHTTPRequest.framework */,

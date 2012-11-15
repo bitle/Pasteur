@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "AgreementViewController.h"
 
-@interface ViewController : UIViewController <UIScrollViewDelegate, AgreementViewDelegate> {
+@interface ViewController : UIViewController <UIScrollViewDelegate, AgreementViewDelegate, CLLocationManagerDelegate> {
+    
+    CLLocationManager *locationManager;
+    CLLocation *bestEffortAtLocation;
+    
     NSArray *questions;
     NSMutableArray *answers;
     NSUInteger currentIndex;
@@ -64,6 +68,9 @@
     UISegmentedControl *segmentedControl8;
 }
 
+@property (nonatomic, strong) CLLocation *bestEffortAtLocation;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
 @property (nonatomic, strong) IBOutlet UISlider *slider;
 @property (nonatomic, strong) IBOutlet UIButton *loginButton;
 @property (strong) NSArray *questions;
@@ -115,4 +122,6 @@
 - (IBAction)showAgreement:(id)sender;
 
 -(void)reset;
+- (void)startLocationTracker;
+- (void)stopUpdatingLocation;
 @end
