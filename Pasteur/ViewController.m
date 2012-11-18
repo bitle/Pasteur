@@ -44,6 +44,8 @@
         NSLog(@"No login needed");
         [self initSurvey];
         [self requestFacebookSession];
+        [self startLocationTracker];
+        [self fetchQuestionsAsync];
     }
 
     UIImage *fb1 = [UIImage imageNamed:@"fb-login-button-small@2x.png"];
@@ -54,14 +56,10 @@
 
     self.tempView.backgroundColor = [UIColor clearColor];
     self.scrollView.backgroundColor = [UIColor clearColor];
-    NSLog(@"Original content offset: %f", scrollView.contentOffset.x);
 
     userData = [NSMutableDictionary dictionaryWithCapacity:3];
 
     self.confirmationLabel.hidden = YES;
-    
-    [self startLocationTracker];
-    [self fetchQuestionsAsync];
 }
 
 - (UITextView *)createTextView: (NSUInteger)page withText: (NSString *)text {
