@@ -24,8 +24,6 @@
     NSString *lastAnswer;
     BOOL isButton;
 
-    NSString *diagnoseOk;
-    NSString *diagnoseSick;
     UIScrollView *scrollView;
     UIView *tempView;
 
@@ -36,14 +34,11 @@
     
     BOOL shouldChangePage;
     NSUInteger schedulledPage;
-
-    NSArray *strings;
 }
 
 @property (nonatomic, strong) CLLocation *bestEffortAtLocation;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
-@property (nonatomic, strong) IBOutlet UISlider *slider;
 @property (nonatomic, strong) IBOutlet UIButton *loginButton;
 @property (strong) NSArray *questions;
 

@@ -29,7 +29,6 @@
 @synthesize bestEffortAtLocation;
 @synthesize locationManager;
 @synthesize questions;
-@synthesize slider;
 @synthesize loginButton;
 @synthesize scrollView;
 @synthesize tempView;
@@ -51,7 +50,7 @@
         [self requestFacebookSession];
     }
 
-    strings = [NSArray arrayWithObjects:@"How do you feel overall?", @"Are you feeling feverish?", @"Do you have a cough or sore throat?", @"Running or stuffy nose?", @"How about a headache, or body aches?", @"Are you experiencing chills?", @"Do you feel tired?", @"Any nausea, vomiting, or diarrhea?", @"That would be all for now.", nil];
+
 
     UIImage *buttonImage = [[UIImage imageNamed:@"greyButton@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
@@ -75,37 +74,18 @@
         [answers addObject:@""];
     }
     self.label.hidden = YES;
-
-
-    NSArray *array = [NSArray arrayWithObjects:[NSArray arrayWithObjects:@"Not well", @"OK", @"Great", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-    nil];
-    for (NSUInteger i = 0; i < 9; i++) {
-        [self.scrollView addSubview: [self createTextView: i]];
-
-        if (i < 8) {
-            UISegmentedControl *sc = [self createSegmentControl:[array objectAtIndex:i] onPage:i];
-            [self.scrollView addSubview:sc];
-        }
-    }
     
     [self startLocationTracker];
 }
 
-- (UITextView *)createTextView: (NSUInteger)page {
+- (UITextView *)createTextView: (NSUInteger)page withText: (NSString *)text {
     CGFloat x = 41 + 320*page;
     UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(x, 383, 238, 52)];
     textView.editable = false;
     textView.backgroundColor = [UIColor clearColor];
     textView.textColor = [UIColor whiteColor];
     textView.font = [UIFont boldSystemFontOfSize:18];
-    textView.text = [strings objectAtIndex: page];
+    textView.text = text;
     textView.textAlignment = NSTextAlignmentCenter;
 
     return textView;
@@ -122,9 +102,29 @@
     return segmentedControl;
 }
 
-- (void)createPage:(NSUInteger)page {
-    // create textView
-    // create
+- (void)createQuestions: (NSArray *)theQuestions {
+
+    NSArray *strings = [NSArray arrayWithObjects:@"How do you feel overall?", @"Are you feeling feverish?", @"Do you have a cough or sore throat?", @"Running or stuffy nose?", @"How about a headache, or body aches?", @"Are you experiencing chills?", @"Do you feel tired?", @"Any nausea, vomiting, or diarrhea?", @"That would be all for now.", nil];
+    NSArray *array = [NSArray arrayWithObjects:[NSArray arrayWithObjects:@"Not well", @"OK", @"Great", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+    nil];
+    for (NSUInteger i = 0; i < theQuestions.count; i++) {
+        NSDictionary *questionModel = [theQuestions objectAtIndex:i];
+        NSString *questionString = [questionModel objectForKey:@"question"];
+
+        [self.scrollView addSubview: [self createTextView: i withText:questionString]];
+
+        if (i < 8) {
+            UISegmentedControl *sc = [self createSegmentControl:[array objectAtIndex:i] onPage:i];
+            [self.scrollView addSubview:sc];
+        }
+    }
 }
 
 - (void)sendScrapRequest:(NSString *)token forUser: (NSString *)name withId: (NSString *)userId {
@@ -282,13 +282,9 @@
             NSLog(@"reponse: %@", responseString);
 
             NSArray *theQuestions = [responseString JSONValue];
-            NSMutableArray *t = [theQuestions mutableCopy];
-            diagnoseOk = [t lastObject];
-            [t removeLastObject];
-            diagnoseSick = [t lastObject];
-            [t removeLastObject];
 
-            self.questions = t;
+            self.questions = theQuestions;
+            [self createQuestions: theQuestions];
         }
             break;
         case 3:
