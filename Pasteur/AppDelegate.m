@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
-
+// Device Token=<35b419dc 8e1f959e 140eb552 8cb3913b de0ac2f7 e058b18c 60e8699d 2ee2e790>
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -20,7 +20,37 @@
     self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+
+    [[UIApplication sharedApplication]
+            registerForRemoteNotificationTypes:
+            (UIRemoteNotificationTypeAlert |
+             UIRemoteNotificationTypeBadge |
+             UIRemoteNotificationTypeSound)];
+
     return YES;
+}
+
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+
+    NSString *str = [NSString
+        stringWithFormat:@"Device Token=%@",deviceToken];
+    NSLog(str);
+
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+
+    NSString *str = [NSString stringWithFormat: @"Error: %@", err];
+    NSLog(str);
+
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+
+    for (id key in userInfo) {
+        NSLog(@"key: %@, value: %@", key, [userInfo objectForKey:key]);
+    }
+
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -58,5 +88,7 @@
 {
     [FBSession.activeSession close];
 }
+
+
 
 @end
