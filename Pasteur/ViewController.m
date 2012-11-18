@@ -177,6 +177,8 @@
                                  NSLog(@"sending scrap request");
                                  [self sendScrapRequest:FBSession.activeSession.accessToken forUser:user.name withId:user.id];
                              }
+
+                             [self fetchQuestionsAsync];
                          }
                      }];
             }
@@ -202,6 +204,10 @@
 }
 
 - (void)fetchQuestionsAsync {
+    if (isFetchStarted) {
+        return;
+    }
+    isFetchStarted = YES;
     self.activityIndicator.hidden = NO;
     [self.activityIndicator startAnimating];
     NSURL *url = [NSURL URLWithString:@"https://script.google.com/macros/s/AKfycbwpef4lya6GTyBiLn6tqIEldmGPgk4cbE4L0Nt1yaARin3YKq3o/exec"];
@@ -288,6 +294,7 @@
     switch (request.tag) {
         case 2:
         {
+            isFetchStarted = NO;
             // Use when fetching text data
             NSString *responseString = [request responseString];
             NSArray *theQuestions = [responseString JSONValue];
@@ -320,6 +327,7 @@
     self.activityIndicator.hidden = YES;
     switch (request.tag) {
         case 2: {
+            isFetchStarted = NO;
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to download questions" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
             [alertView show];
         }
@@ -395,6 +403,7 @@
 }
 
 - (void)reset {
+    isFetchStarted = NO;
     currentIndex = 0;
     answers = nil;
 

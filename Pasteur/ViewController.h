@@ -28,6 +28,7 @@
     NSUInteger schedulledPage;
     UILabel *confirmationLabel;
     UIActivityIndicatorView *activityIndicator;
+    BOOL isFetchStarted;
 }
 
 @property (nonatomic, strong) CLLocation *bestEffortAtLocation;
