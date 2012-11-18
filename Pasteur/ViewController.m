@@ -57,10 +57,7 @@
     NSLog(@"Original content offset: %f", scrollView.contentOffset.x);
 
     userData = [NSMutableDictionary dictionaryWithCapacity:3];
-    answers = [NSMutableArray arrayWithCapacity:8];
-    for (int i = 0; i < 8; i++) {
-        [answers addObject:@""];
-    }
+
     self.confirmationLabel.hidden = YES;
     
     [self startLocationTracker];
@@ -93,6 +90,12 @@
 
 - (void)createQuestions: (NSArray *)theQuestions {
     self.tempView.hidden = NO;
+
+    answers = [NSMutableArray arrayWithCapacity: theQuestions.count - 2];
+    for (int i = 0; i < theQuestions.count - 2; i++) {
+        [answers addObject:@""];
+    }
+
     self.scrollView.contentSize = CGSizeMake(theQuestions.count*320, self.scrollView.frame.size.height);
     for (NSUInteger i = 0; i < theQuestions.count - 1; i++) {
         NSDictionary *questionModel = [theQuestions objectAtIndex:i];
@@ -380,9 +383,7 @@
 
 - (void)reset {
     currentIndex = 0;
-    for (int i = 0; i < 8; i++) {
-        [answers replaceObjectAtIndex:i withObject:@""];
-    }
+    answers = nil;
 
     CGRect frame = self.scrollView.frame;
     frame.origin.x = 0;

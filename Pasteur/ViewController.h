@@ -20,7 +20,6 @@
     NSUInteger currentIndex;
     UIButton *loginButton;
     NSMutableDictionary *userData;
-    NSString *lastAnswer;
 
     UIScrollView *scrollView;
     UIView *tempView;
