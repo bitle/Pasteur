@@ -32,10 +32,9 @@
 @synthesize loginButton;
 @synthesize scrollView;
 @synthesize tempView;
+@synthesize confirmationLabel;
 
 @synthesize button1;
-@synthesize buttonSubmit;
-@synthesize label;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,14 +48,6 @@
         [self initSurvey];
         [self requestFacebookSession];
     }
-
-
-
-    UIImage *buttonImage = [[UIImage imageNamed:@"greyButton@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-    UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
-
-    [buttonSubmit setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    [buttonSubmit setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
 
     UIImage *fb1 = [UIImage imageNamed:@"fb-login-button-small@2x.png"];
     UIImage *fb2 = [UIImage imageNamed:@"fb-login-button-small-pressed@2x.png"];
@@ -73,7 +64,7 @@
     for (int i = 0; i < 8; i++) {
         [answers addObject:@""];
     }
-    self.label.hidden = YES;
+    self.confirmationLabel.hidden = YES;
     
     [self startLocationTracker];
 }
@@ -103,21 +94,51 @@
 }
 
 - (void)createQuestions: (NSArray *)theQuestions {
-    for (NSUInteger i = 0; i < theQuestions.count; i++) {
+    self.scrollView.contentSize = CGSizeMake(theQuestions.count*320, self.scrollView.frame.size.height);
+    for (NSUInteger i = 0; i < theQuestions.count - 1; i++) {
         NSDictionary *questionModel = [theQuestions objectAtIndex:i];
         NSString *questionString = [questionModel objectForKey:@"question"];
         NSString *type = [questionModel objectForKey:@"type"];
 
 
+
         if ([type isEqualToString:@"segment"]) {
+            [self.scrollView addSubview: [self createTextView: i withText:questionString]];
             NSArray *segments = [questionModel objectForKey:@"segments"];
 
             UISegmentedControl *sc = [self createSegmentControl:segments onPage:i];
                         [self.scrollView addSubview:sc];
+        } else if ([type isEqualToString:@"submit"]) {
+            [self.scrollView addSubview: [self createTextView: i withText:questionString]];
+             // create Button
+            CGFloat x = 113 + 320*i;
+            UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(x, 478, 95, 36)];
+            UIImage *buttonImage = [[UIImage imageNamed:@"greyButton@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+            UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
+
+            [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
+            [button setBackgroundImage:buttonImageHighlight forState:UIControlStateHighlighted];
+
+            [button setTitle:@"Submit" forState:UIControlStateNormal];
+            [button setTitle:@"Submit" forState:UIControlStateHighlighted];
+            button.tag = 2;
+
+            CGFloat r = (float)151.0/255.0;
+            CGFloat g = r;
+            CGFloat b = r;
+
+            button.titleLabel.shadowOffset = CGSizeMake(0, 1);
+            button.titleLabel.font = [UIFont boldSystemFontOfSize:18.0];
+            button.titleLabel.shadowColor = [UIColor whiteColor];
+            button.titleLabel.textColor = [UIColor colorWithRed:r green:g blue:b alpha:1.0];
+
+            [button addTarget:self action:@selector(updateQuestion:) forControlEvents: UIControlEventTouchUpInside];
+
+            [self.scrollView addSubview:button];
+        } else if ([type isEqualToString:@"confirmation"]) {
+            // don't create anything but text view
+            self.confirmationLabel.text = questionString;
         }
-
-
-        [self.scrollView addSubview: [self createTextView: i withText:questionString]];
     }
 }
 
@@ -235,7 +256,7 @@
 - (void)finishSurvey {
     NSLog(@"Finish Survey");
     self.tempView.hidden = YES;
-    self.label.hidden = NO;
+    self.confirmationLabel.hidden = NO;
     [userData setObject:answers forKey:@"questions"];
 
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -284,7 +305,6 @@
         case 3:
             NSLog(@"Post request finished: %@", [request responseString]);
             self.tempView.hidden = YES;
-            self.label.hidden = NO;
             //[self reset];
             break;
         case 4:
@@ -386,9 +406,12 @@
     frame.origin.x = 0;
     frame.origin.y = 0;
     [self.scrollView scrollRectToVisible:frame animated:NO];
+    for(UIView *view in self.scrollView.subviews) {
+        [view removeFromSuperview];
+    }
 
     self.tempView.hidden = NO;
-    self.label.hidden = YES;
+    self.confirmationLabel.hidden = YES;
 }
 
 - (void)startLocationTracker {

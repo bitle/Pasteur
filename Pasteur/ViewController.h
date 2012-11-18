@@ -27,13 +27,11 @@
     UIScrollView *scrollView;
     UIView *tempView;
 
-    UILabel *label;
-
     UIButton *button1;
-    UIButton *buttonSubmit;
     
     BOOL shouldChangePage;
     NSUInteger schedulledPage;
+    UILabel *confirmationLabel;
 }
 
 @property (nonatomic, strong) CLLocation *bestEffortAtLocation;
@@ -45,10 +43,8 @@
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UIView *tempView;
 
-@property (nonatomic, strong) IBOutlet UILabel *label;
-
 @property (nonatomic, strong) IBOutlet UIButton *button1;
-@property (nonatomic, strong) IBOutlet UIButton *buttonSubmit;
+@property (nonatomic, strong) IBOutlet UILabel *confirmationLabel;
 
 - (IBAction)updateQuestion:(id)sender;
 - (IBAction)buttonClicked:(id)sender;

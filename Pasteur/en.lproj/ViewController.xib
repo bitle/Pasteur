@@ -60,7 +60,6 @@
 						<string key="NSFrame">{{100, 501}, {120, 21}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -166,39 +165,6 @@
 			<object class="IBUIScrollView" id="475133581">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">266</int>
-				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIButton" id="1026703754">
-						<reference key="NSNextResponder" ref="475133581"/>
-						<int key="NSvFlags">269</int>
-						<string key="NSFrame">{{2673, 478}, {95, 36}}</string>
-						<reference key="NSSuperview" ref="475133581"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<int key="IBUITag">2</int>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<int key="IBUIContentHorizontalAlignment">0</int>
-						<int key="IBUIContentVerticalAlignment">0</int>
-						<double key="IBUIContentEdgeInsets.top">0.0</double>
-						<double key="IBUIContentEdgeInsets.bottom">0.0</double>
-						<double key="IBUIContentEdgeInsets.left">0.0</double>
-						<double key="IBUIContentEdgeInsets.right">-2</double>
-						<string key="IBUITitleShadowOffset">{0, 1}</string>
-						<string key="IBUINormalTitle">Submit</string>
-						<reference key="IBUIHighlightedTitleColor" ref="638053138"/>
-						<object class="NSColor" key="IBUINormalTitleColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC42MDcyMjI1NzY1IDAuNjA3MjIyNTc2NSAwLjYwNzIyMjU3NjUAA</bytes>
-						</object>
-						<reference key="IBUINormalTitleShadowColor" ref="638053138"/>
-						<object class="IBUIFontDescription" key="IBUIFontDescription">
-							<int key="type">2</int>
-							<int key="size">2</int>
-						</object>
-						<reference key="IBUIFont" ref="60692062"/>
-					</object>
-				</array>
 				<string key="NSFrameSize">{320, 568}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
@@ -251,19 +217,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">buttonSubmit</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="1026703754"/>
-					</object>
-					<int key="connectionID">226</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">label</string>
+						<string key="label">confirmationLabel</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="697422553"/>
 					</object>
-					<int key="connectionID">232</int>
+					<int key="connectionID">281</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -273,15 +231,6 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">153</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">updateQuestion:</string>
-						<reference key="source" ref="1026703754"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
-					</object>
-					<int key="connectionID">228</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -327,15 +276,8 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">154</int>
 						<reference key="object" ref="475133581"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="1026703754"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">205</int>
-						<reference key="object" ref="1026703754"/>
-						<reference key="parent" ref="475133581"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">206</int>
@@ -359,7 +301,6 @@
 				<real value="2" key="150.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
 				<real value="0.0" key="150.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="154.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="205.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="206.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="231.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="42.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -369,7 +310,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">280</int>
+			<int key="maxID">281</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -379,7 +320,6 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="buttonClicked:">id</string>
 						<string key="showAgreement:">id</string>
-						<string key="sliderChanged:">id</string>
 						<string key="updateQuestion:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
@@ -391,10 +331,6 @@
 							<string key="name">showAgreement:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="sliderChanged:">
-							<string key="name">sliderChanged:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="updateQuestion:">
 							<string key="name">updateQuestion:</string>
 							<string key="candidateClassName">id</string>
@@ -402,19 +338,9 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="button1">UIButton</string>
-						<string key="buttonSubmit">UIButton</string>
-						<string key="label">UILabel</string>
+						<string key="confirmationLabel">UILabel</string>
 						<string key="loginButton">UIButton</string>
 						<string key="scrollView">UIScrollView</string>
-						<string key="segmentedControl1">UISegmentedControl</string>
-						<string key="segmentedControl2">UISegmentedControl</string>
-						<string key="segmentedControl3">UISegmentedControl</string>
-						<string key="segmentedControl4">UISegmentedControl</string>
-						<string key="segmentedControl5">UISegmentedControl</string>
-						<string key="segmentedControl6">UISegmentedControl</string>
-						<string key="segmentedControl7">UISegmentedControl</string>
-						<string key="segmentedControl8">UISegmentedControl</string>
-						<string key="slider">UISlider</string>
 						<string key="tempView">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -422,12 +348,8 @@
 							<string key="name">button1</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="buttonSubmit">
-							<string key="name">buttonSubmit</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="label">
-							<string key="name">label</string>
+						<object class="IBToOneOutletInfo" key="confirmationLabel">
+							<string key="name">confirmationLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="loginButton">
@@ -437,42 +359,6 @@
 						<object class="IBToOneOutletInfo" key="scrollView">
 							<string key="name">scrollView</string>
 							<string key="candidateClassName">UIScrollView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="segmentedControl1">
-							<string key="name">segmentedControl1</string>
-							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="segmentedControl2">
-							<string key="name">segmentedControl2</string>
-							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="segmentedControl3">
-							<string key="name">segmentedControl3</string>
-							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="segmentedControl4">
-							<string key="name">segmentedControl4</string>
-							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="segmentedControl5">
-							<string key="name">segmentedControl5</string>
-							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="segmentedControl6">
-							<string key="name">segmentedControl6</string>
-							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="segmentedControl7">
-							<string key="name">segmentedControl7</string>
-							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="segmentedControl8">
-							<string key="name">segmentedControl8</string>
-							<string key="candidateClassName">UISegmentedControl</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="slider">
-							<string key="name">slider</string>
-							<string key="candidateClassName">UISlider</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="tempView">
 							<string key="name">tempView</string>
