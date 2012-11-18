@@ -318,6 +318,21 @@
     NSLog(@"response failed: %@", [error debugDescription]);
     [self.activityIndicator stopAnimating];
     self.activityIndicator.hidden = YES;
+    switch (request.tag) {
+        case 2: {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to download questions" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alertView show];
+        }
+            break;
+        case 3:
+        {
+            self.tempView.hidden = YES;
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to upload survey results" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alertView show];
+        }
+            break;
+    }
+
 }
 
 - (void)agreementViewDone:(BOOL)isAgree {
