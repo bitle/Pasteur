@@ -79,6 +79,9 @@
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems: segments];
     [segmentedControl addTarget:self action:@selector(updateQuestion:) forControlEvents: UIControlEventValueChanged];
     CGRect frame = segmentedControl.frame;
+    if (segments.count == 2) {
+        frame.size.width = 161;
+    }
     frame.origin.x = 160 + 320*page - frame.size.width / 2;
     frame.origin.y = 496;
 
@@ -180,6 +183,7 @@
                              }
 
                              [self fetchQuestionsAsync];
+                             [self startLocationTracker];
                          }
                      }];
             }
