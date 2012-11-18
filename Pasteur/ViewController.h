@@ -69,6 +69,8 @@
     
     BOOL shouldChangePage;
     NSUInteger schedulledPage;
+
+    NSArray *strings;
 }
 
 @property (nonatomic, strong) CLLocation *bestEffortAtLocation;

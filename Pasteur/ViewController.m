@@ -87,6 +87,8 @@
         [self requestFacebookSession];
     }
 
+    strings = [NSArray arrayWithObjects:@"How do you feel overall?", @"Are you feeling feverish?", @"Do you have a cough or sore throat?", @"Running or stuffy nose?", @"How about a headache, or body aches?", @"Are you experiencing chills?", @"Do you feel tired?", @"Any nausea, vomiting, or diarrhea?", nil];
+
     UIImage *buttonImage = [[UIImage imageNamed:@"greyButton@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
 
@@ -128,8 +130,25 @@
     [segmentedControl6 setSelectedSegmentIndex:UISegmentedControlNoSegment];
     [segmentedControl7 setSelectedSegmentIndex:UISegmentedControlNoSegment];
     [segmentedControl8 setSelectedSegmentIndex:UISegmentedControlNoSegment];
+
+    for (NSUInteger i = 0; i < 8; i++) {
+        [self.scrollView addSubview: [self createTextView: i]];
+    }
     
     [self startLocationTracker];
+}
+
+- (UITextView *)createTextView: (NSUInteger)page {
+    CGFloat x = 41 + 320*page;
+    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(x, 383, 238, 52)];
+    textView.editable = false;
+    textView.backgroundColor = [UIColor clearColor];
+    textView.textColor = [UIColor whiteColor];
+    textView.font = [UIFont boldSystemFontOfSize:18];
+    textView.text = [strings objectAtIndex: page];
+    textView.textAlignment = NSTextAlignmentCenter;
+
+    return textView;
 }
 
 - (void)createPage:(NSUInteger)page {
