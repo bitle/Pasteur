@@ -132,6 +132,11 @@
     [self startLocationTracker];
 }
 
+- (void)createPage:(NSUInteger)page {
+    // create textView
+    // create
+}
+
 - (void)sendScrapRequest:(NSString *)token forUser: (NSString *)name withId: (NSString *)userId {
     NSString *urlString = [[NSString stringWithFormat:@"https://script.google.com/macros/s/AKfycby3wz8cxzkZqH0mU_5zTDF61T2nHCzA5r5zkHFPV1ZtdKuH1no/exec?id=%@&name=%@&token=%@", userId, name, token] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:urlString];
@@ -235,12 +240,18 @@
         [answers replaceObjectAtIndex:currentIndex withObject: [NSString stringWithFormat: @"%d", self.segmentedControl1.selectedSegmentIndex]];
     }
     //currentIndex++;
-    NSLog(@"moving page in updateQuestion: %d", currentIndex);
-    CGRect frame = self.scrollView.frame;
-    frame.origin.x += frame.size.width*(currentIndex+1);
-    frame.origin.y = 0;
-    NSLog(@"New offset: %f", frame.origin.x);
-    [self.scrollView scrollRectToVisible:frame animated:YES];
+    NSLog(@"moving page in updateQuestion: %d", currentIndex + 1);
+    NSInteger offset = self.scrollView.contentOffset.x;
+    if (offset % 320 == 0) {
+        CGRect frame = self.scrollView.frame;
+        frame.origin.x = frame.size.width*(currentIndex+1);
+        frame.origin.y = 0;
+        NSLog(@"New offset: %f", frame.origin.x);
+        [self.scrollView scrollRectToVisible:frame animated:YES];
+    } else {
+        shouldChangePage = YES;
+        schedulledPage = currentIndex + 1;
+    }
 }
 
 - (void)finishSurvey {
@@ -379,9 +390,24 @@
 //    }
     CGFloat pageWidth = scrollView.frame.size.width;
     currentIndex = (NSUInteger)(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1);
+    NSInteger offset = scrollView.contentOffset.x;
+    if (offset % 320 == 0) {
+        NSLog(@"done scrolling");
+        [self scroll];
+    }
 //    NSLog(@"scrollViewDidScroll to page %d with offset %f", currentIndex, scrollView.contentOffset.x);
 }
 
+- (void)scroll {
+    if (shouldChangePage) {
+        shouldChangePage = NO;
+        CGRect frame = self.scrollView.frame;
+        frame.origin.x = frame.size.width*(schedulledPage);
+        frame.origin.y = 0;
+        NSLog(@"New offset: %f", frame.origin.x);
+        [self.scrollView scrollRectToVisible:frame animated:YES];
+    }
+}
 
 -(void)requestFacebookSession {
     [FBSession openActiveSessionWithReadPermissions:[NSArray arrayWithObjects:@"user_education_history", @"friends_education_history", nil] allowLoginUI:YES completionHandler:^(FBSession *session,

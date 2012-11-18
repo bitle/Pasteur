@@ -66,6 +66,9 @@
     UISegmentedControl *segmentedControl6;
     UISegmentedControl *segmentedControl7;
     UISegmentedControl *segmentedControl8;
+    
+    BOOL shouldChangePage;
+    NSUInteger schedulledPage;
 }
 
 @property (nonatomic, strong) CLLocation *bestEffortAtLocation;
