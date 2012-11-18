@@ -103,27 +103,21 @@
 }
 
 - (void)createQuestions: (NSArray *)theQuestions {
-
-    NSArray *strings = [NSArray arrayWithObjects:@"How do you feel overall?", @"Are you feeling feverish?", @"Do you have a cough or sore throat?", @"Running or stuffy nose?", @"How about a headache, or body aches?", @"Are you experiencing chills?", @"Do you feel tired?", @"Any nausea, vomiting, or diarrhea?", @"That would be all for now.", nil];
-    NSArray *array = [NSArray arrayWithObjects:[NSArray arrayWithObjects:@"Not well", @"OK", @"Great", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
-    nil];
     for (NSUInteger i = 0; i < theQuestions.count; i++) {
         NSDictionary *questionModel = [theQuestions objectAtIndex:i];
         NSString *questionString = [questionModel objectForKey:@"question"];
+        NSString *type = [questionModel objectForKey:@"type"];
+
+
+        if ([type isEqualToString:@"segment"]) {
+            NSArray *segments = [questionModel objectForKey:@"segments"];
+
+            UISegmentedControl *sc = [self createSegmentControl:segments onPage:i];
+                        [self.scrollView addSubview:sc];
+        }
+
 
         [self.scrollView addSubview: [self createTextView: i withText:questionString]];
-
-        if (i < 8) {
-            UISegmentedControl *sc = [self createSegmentControl:[array objectAtIndex:i] onPage:i];
-            [self.scrollView addSubview:sc];
-        }
     }
 }
 
