@@ -17,7 +17,6 @@
 			<string>IBUILabel</string>
 			<string>IBUIScrollView</string>
 			<string>IBUISegmentedControl</string>
-			<string>IBUITextView</string>
 			<string>IBUIView</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
@@ -76,7 +75,7 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
 						<int key="IBUITextAlignment">1</int>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="726760480">
+						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
 							<double key="pointSize">18</double>
 						</object>
@@ -168,35 +167,6 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">266</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUITextView" id="657333511">
-						<reference key="NSNextResponder" ref="475133581"/>
-						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{2601, 383}, {238, 52}}</string>
-						<reference key="NSSuperview" ref="475133581"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="42689816"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MSAxIDEAA</bytes>
-						</object>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<bool key="IBUIMultipleTouchEnabled">YES</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<bool key="IBUIBounces">NO</bool>
-						<bool key="IBUIScrollEnabled">NO</bool>
-						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
-						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
-						<string key="IBUIText">That would be all for now.</string>
-						<reference key="IBUITextColor" ref="638053138"/>
-						<int key="IBUITextAlignment">1</int>
-						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
-							<int key="IBUIAutocapitalizationType">2</int>
-							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						</object>
-						<reference key="IBUIFontDescription" ref="726760480"/>
-						<reference key="IBUIFont" ref="60692062"/>
-					</object>
 					<object class="IBUIButton" id="1026703754">
 						<reference key="NSNextResponder" ref="475133581"/>
 						<int key="NSvFlags">269</int>
@@ -566,14 +536,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">textView9</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="657333511"/>
-					</object>
-					<int key="connectionID">241</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">segmentedControl1</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="42689816"/>
@@ -771,7 +733,6 @@
 						<int key="objectID">154</int>
 						<reference key="object" ref="475133581"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="657333511"/>
 							<reference ref="1048415963"/>
 							<reference ref="518269186"/>
 							<reference ref="129513949"/>
@@ -787,11 +748,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">205</int>
 						<reference key="object" ref="1026703754"/>
-						<reference key="parent" ref="475133581"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">204</int>
-						<reference key="object" ref="657333511"/>
 						<reference key="parent" ref="475133581"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -856,7 +812,6 @@
 				<real value="2" key="150.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
 				<real value="0.0" key="150.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="154.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="204.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="205.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="206.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="231.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -916,20 +871,6 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="button1">UIButton</string>
-						<string key="button2no">UIButton</string>
-						<string key="button2yes">UIButton</string>
-						<string key="button3no">UIButton</string>
-						<string key="button3yes">UIButton</string>
-						<string key="button4no">UIButton</string>
-						<string key="button4yes">UIButton</string>
-						<string key="button5no">UIButton</string>
-						<string key="button5yes">UIButton</string>
-						<string key="button6no">UIButton</string>
-						<string key="button6yes">UIButton</string>
-						<string key="button7no">UIButton</string>
-						<string key="button7yes">UIButton</string>
-						<string key="button8no">UIButton</string>
-						<string key="button8yes">UIButton</string>
 						<string key="buttonSubmit">UIButton</string>
 						<string key="label">UILabel</string>
 						<string key="loginButton">UIButton</string>
@@ -944,75 +885,10 @@
 						<string key="segmentedControl8">UISegmentedControl</string>
 						<string key="slider">UISlider</string>
 						<string key="tempView">UIView</string>
-						<string key="textView1">UITextView</string>
-						<string key="textView2">UITextView</string>
-						<string key="textView3">UITextView</string>
-						<string key="textView4">UITextView</string>
-						<string key="textView5">UITextView</string>
-						<string key="textView6">UITextView</string>
-						<string key="textView7">UITextView</string>
-						<string key="textView8">UITextView</string>
-						<string key="textView9">UITextView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="button1">
 							<string key="name">button1</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button2no">
-							<string key="name">button2no</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button2yes">
-							<string key="name">button2yes</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button3no">
-							<string key="name">button3no</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button3yes">
-							<string key="name">button3yes</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button4no">
-							<string key="name">button4no</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button4yes">
-							<string key="name">button4yes</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button5no">
-							<string key="name">button5no</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button5yes">
-							<string key="name">button5yes</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button6no">
-							<string key="name">button6no</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button6yes">
-							<string key="name">button6yes</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button7no">
-							<string key="name">button7no</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button7yes">
-							<string key="name">button7yes</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button8no">
-							<string key="name">button8no</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button8yes">
-							<string key="name">button8yes</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="buttonSubmit">
@@ -1070,42 +946,6 @@
 						<object class="IBToOneOutletInfo" key="tempView">
 							<string key="name">tempView</string>
 							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="textView1">
-							<string key="name">textView1</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="textView2">
-							<string key="name">textView2</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="textView3">
-							<string key="name">textView3</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="textView4">
-							<string key="name">textView4</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="textView5">
-							<string key="name">textView5</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="textView6">
-							<string key="name">textView6</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="textView7">
-							<string key="name">textView7</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="textView8">
-							<string key="name">textView8</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="textView9">
-							<string key="name">textView9</string>
-							<string key="candidateClassName">UITextView</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

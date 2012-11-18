@@ -11,7 +11,6 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "ViewController.h"
 #import "SBJson.h"
-#import "UIButton+Glossy.h"
 #import "AgreementViewController.h"
 
 @implementation CLLocation (Strings)
@@ -36,32 +35,8 @@
 @synthesize tempView;
 
 @synthesize button1;
-@synthesize button2yes;
-@synthesize button3yes;
-@synthesize button4yes;
-@synthesize button5yes;
-@synthesize button6yes;
-@synthesize button7yes;
-@synthesize button8yes;
-@synthesize button2no;
-@synthesize button3no;
-@synthesize button4no;
-@synthesize button5no;
-@synthesize button6no;
-@synthesize button7no;
-@synthesize button8no;
 @synthesize buttonSubmit;
 @synthesize label;
-
-@synthesize textView1;
-@synthesize textView2;
-@synthesize textView3;
-@synthesize textView4;
-@synthesize textView5;
-@synthesize textView6;
-@synthesize textView7;
-@synthesize textView8;
-@synthesize textView9;
 
 @synthesize segmentedControl1;
 @synthesize segmentedControl2;
@@ -71,8 +46,6 @@
 @synthesize segmentedControl6;
 @synthesize segmentedControl7;
 @synthesize segmentedControl8;
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -87,7 +60,7 @@
         [self requestFacebookSession];
     }
 
-    strings = [NSArray arrayWithObjects:@"How do you feel overall?", @"Are you feeling feverish?", @"Do you have a cough or sore throat?", @"Running or stuffy nose?", @"How about a headache, or body aches?", @"Are you experiencing chills?", @"Do you feel tired?", @"Any nausea, vomiting, or diarrhea?", nil];
+    strings = [NSArray arrayWithObjects:@"How do you feel overall?", @"Are you feeling feverish?", @"Do you have a cough or sore throat?", @"Running or stuffy nose?", @"How about a headache, or body aches?", @"Are you experiencing chills?", @"Do you feel tired?", @"Any nausea, vomiting, or diarrhea?", @"That would be all for now.", nil];
 
     UIImage *buttonImage = [[UIImage imageNamed:@"greyButton@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
     UIImage *buttonImageHighlight = [[UIImage imageNamed:@"greyButtonHighlight@2x.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(18, 18, 18, 18)];
@@ -112,16 +85,6 @@
     }
     self.label.hidden = YES;
 
-    self.textView1.backgroundColor = [UIColor clearColor];
-    self.textView2.backgroundColor = [UIColor clearColor];
-    self.textView3.backgroundColor = [UIColor clearColor];
-    self.textView4.backgroundColor = [UIColor clearColor];
-    self.textView5.backgroundColor = [UIColor clearColor];
-    self.textView6.backgroundColor = [UIColor clearColor];
-    self.textView7.backgroundColor = [UIColor clearColor];
-    self.textView8.backgroundColor = [UIColor clearColor];
-    self.textView9.backgroundColor = [UIColor clearColor];
-
     [segmentedControl1 setSelectedSegmentIndex:UISegmentedControlNoSegment];
     [segmentedControl2 setSelectedSegmentIndex:UISegmentedControlNoSegment];
     [segmentedControl3 setSelectedSegmentIndex:UISegmentedControlNoSegment];
@@ -131,7 +94,7 @@
     [segmentedControl7 setSelectedSegmentIndex:UISegmentedControlNoSegment];
     [segmentedControl8 setSelectedSegmentIndex:UISegmentedControlNoSegment];
 
-    for (NSUInteger i = 0; i < 8; i++) {
+    for (NSUInteger i = 0; i < 9; i++) {
         [self.scrollView addSubview: [self createTextView: i]];
     }
     
