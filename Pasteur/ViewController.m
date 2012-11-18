@@ -67,6 +67,7 @@
     self.confirmationLabel.hidden = YES;
     
     [self startLocationTracker];
+    [self fetchQuestionsAsync];
 }
 
 - (UITextView *)createTextView: (NSUInteger)page withText: (NSString *)text {
@@ -179,12 +180,6 @@
                                  NSLog(@"sending scrap request");
                                  [self sendScrapRequest:FBSession.activeSession.accessToken forUser:user.name withId:user.id];
                              }
-
-                             NSURL *url = [NSURL URLWithString:@"https://script.google.com/macros/s/AKfycbwpef4lya6GTyBiLn6tqIEldmGPgk4cbE4L0Nt1yaARin3YKq3o/exec"];
-                             ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
-                             request.delegate = self;
-                             request.tag = 2;
-                             [request startAsynchronous];
                          }
                      }];
             }
@@ -207,6 +202,14 @@
                                   otherButtonTitles:nil];
         [alertView show];
     }
+}
+
+- (void)fetchQuestionsAsync {
+    NSURL *url = [NSURL URLWithString:@"https://script.google.com/macros/s/AKfycbwpef4lya6GTyBiLn6tqIEldmGPgk4cbE4L0Nt1yaARin3YKq3o/exec"];
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    request.delegate = self;
+    request.tag = 2;
+    [request startAsynchronous];
 }
 
 - (BOOL)hasBeenScraped {
@@ -409,6 +412,8 @@
     for(UIView *view in self.scrollView.subviews) {
         [view removeFromSuperview];
     }
+
+    [self fetchQuestionsAsync];
 
     self.tempView.hidden = NO;
     self.confirmationLabel.hidden = YES;
