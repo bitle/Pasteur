@@ -61,7 +61,6 @@
 						<string key="NSFrame">{{100, 501}, {120, 21}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -182,7 +181,6 @@
 				<string key="NSFrameSize">{320, 568}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<bool key="IBUIAutoresizesSubviews">NO</bool>
 				<bool key="IBUIClipsSubviews">YES</bool>
@@ -347,15 +345,10 @@
 					<string key="className">ViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="buttonClicked:">id</string>
 						<string key="showAgreement:">id</string>
 						<string key="updateQuestion:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="buttonClicked:">
-							<string key="name">buttonClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="showAgreement:">
 							<string key="name">showAgreement:</string>
 							<string key="candidateClassName">id</string>
@@ -367,7 +360,6 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="activityIndicator">UIActivityIndicatorView</string>
-						<string key="button1">UIButton</string>
 						<string key="confirmationLabel">UILabel</string>
 						<string key="loginButton">UIButton</string>
 						<string key="scrollView">UIScrollView</string>
@@ -377,10 +369,6 @@
 						<object class="IBToOneOutletInfo" key="activityIndicator">
 							<string key="name">activityIndicator</string>
 							<string key="candidateClassName">UIActivityIndicatorView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="button1">
-							<string key="name">button1</string>
-							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="confirmationLabel">
 							<string key="name">confirmationLabel</string>

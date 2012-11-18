@@ -6,12 +6,10 @@
 //  Copyright (c) 2012 Harvard University. All rights reserved.
 //
 
-#import <ASIHTTPRequest/ASIHTTPRequest.h>
 #import <CoreLocation/CoreLocation.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "ViewController.h"
 #import "SBJson.h"
-#import "AgreementViewController.h"
 
 @implementation CLLocation (Strings)
 
@@ -34,8 +32,6 @@
 @synthesize tempView;
 @synthesize confirmationLabel;
 @synthesize activityIndicator;
-
-@synthesize button1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -96,15 +92,12 @@
 }
 
 - (void)createQuestions: (NSArray *)theQuestions {
-    NSLog(@"createQuestions");
     self.tempView.hidden = NO;
     self.scrollView.contentSize = CGSizeMake(theQuestions.count*320, self.scrollView.frame.size.height);
     for (NSUInteger i = 0; i < theQuestions.count - 1; i++) {
         NSDictionary *questionModel = [theQuestions objectAtIndex:i];
         NSString *questionString = [questionModel objectForKey:@"question"];
         NSString *type = [questionModel objectForKey:@"type"];
-
-
 
         if ([type isEqualToString:@"segment"]) {
             [self.scrollView addSubview: [self createTextView: i withText:questionString]];
@@ -239,7 +232,6 @@
 }
 
 - (IBAction)updateQuestion:(id)sender {
-    isButton = YES;
     if ([sender tag] == 2) {
         NSLog(@"answers: %@", answers);
         [self finishSurvey];
@@ -247,13 +239,11 @@
         [answers replaceObjectAtIndex:currentIndex withObject: [NSString stringWithFormat: @"%d", [sender selectedSegmentIndex]]];
     }
 
-    NSLog(@"moving page in updateQuestion: %d", currentIndex + 1);
     NSInteger offset = self.scrollView.contentOffset.x;
     if (offset % 320 == 0) {
         CGRect frame = self.scrollView.frame;
         frame.origin.x = frame.size.width*(currentIndex+1);
         frame.origin.y = 0;
-        NSLog(@"New offset: %f", frame.origin.x);
         [self.scrollView scrollRectToVisible:frame animated:YES];
     } else {
         shouldChangePage = YES;
@@ -262,7 +252,6 @@
 }
 
 - (void)finishSurvey {
-    NSLog(@"Finish Survey");
     self.tempView.hidden = YES;
     self.confirmationLabel.hidden = NO;
     [userData setObject:answers forKey:@"questions"];
@@ -292,19 +281,14 @@
     [request startAsynchronous];
 }
 
-- (IBAction)buttonClicked:(id)sender {
-    [self updateQuestion:sender];
-}
-
 - (void)requestFinished:(ASIHTTPRequest *)request {
     NSLog(@"request finished: %d", request.tag);
+    NSLog(@"response string: %@", [request responseString]);
     switch (request.tag) {
         case 2:
         {
             // Use when fetching text data
             NSString *responseString = [request responseString];
-            NSLog(@"reponse: %@", responseString);
-
             NSArray *theQuestions = [responseString JSONValue];
 
             self.questions = theQuestions;
@@ -314,9 +298,7 @@
         }
             break;
         case 3:
-            NSLog(@"Post request finished: %@", [request responseString]);
             self.tempView.hidden = YES;
-            //[self reset];
             break;
         case 4:
         {
@@ -338,7 +320,6 @@
 }
 
 - (void)agreementViewDone:(BOOL)isAgree {
-    NSLog(@"isAgree: %@", isAgree ? @"yes" : @"no");
     [self dismissModalViewControllerAnimated:YES];
     if (isAgree) {
         [self initSurvey];
@@ -366,16 +347,7 @@
     [self.tempView addSubview: self.scrollView];
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    NSLog(@"scrollViewWillBeginDragging");
-    isButton = NO;
-}
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView1 {
-        NSLog(@"scrollViewDidScroll to page %d with offset %f", currentIndex, scrollView.contentOffset.x);
-//    if (isButton) {
-//        return;
-//    }
     CGFloat pageWidth = scrollView.frame.size.width;
     currentIndex = (NSUInteger)(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1);
     NSInteger offset = scrollView.contentOffset.x;
@@ -383,7 +355,6 @@
         NSLog(@"done scrolling");
         [self scroll];
     }
-//    NSLog(@"scrollViewDidScroll to page %d with offset %f", currentIndex, scrollView.contentOffset.x);
 }
 
 - (void)scroll {
@@ -408,13 +379,11 @@
 }
 
 - (void)reset {
-    NSLog(@"reset");
     currentIndex = 0;
     for (int i = 0; i < 8; i++) {
         [answers replaceObjectAtIndex:i withObject:@""];
     }
 
-    isButton = YES;
     CGRect frame = self.scrollView.frame;
     frame.origin.x = 0;
     frame.origin.y = 0;
