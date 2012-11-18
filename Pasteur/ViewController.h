@@ -33,15 +33,6 @@
 
     UIButton *button1;
     UIButton *buttonSubmit;
-
-    UISegmentedControl *segmentedControl1;
-    UISegmentedControl *segmentedControl2;
-    UISegmentedControl *segmentedControl3;
-    UISegmentedControl *segmentedControl4;
-    UISegmentedControl *segmentedControl5;
-    UISegmentedControl *segmentedControl6;
-    UISegmentedControl *segmentedControl7;
-    UISegmentedControl *segmentedControl8;
     
     BOOL shouldChangePage;
     NSUInteger schedulledPage;
@@ -64,18 +55,8 @@
 @property (nonatomic, strong) IBOutlet UIButton *button1;
 @property (nonatomic, strong) IBOutlet UIButton *buttonSubmit;
 
-@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl1;
-@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl2;
-@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl3;
-@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl4;
-@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl5;
-@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl6;
-@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl7;
-@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl8;
-
 - (IBAction)updateQuestion:(id)sender;
 - (IBAction)buttonClicked:(id)sender;
-- (IBAction)sliderChanged:(id)sender;
 - (IBAction)showAgreement:(id)sender;
 
 -(void)reset;

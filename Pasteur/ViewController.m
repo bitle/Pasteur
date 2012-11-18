@@ -38,15 +38,6 @@
 @synthesize buttonSubmit;
 @synthesize label;
 
-@synthesize segmentedControl1;
-@synthesize segmentedControl2;
-@synthesize segmentedControl3;
-@synthesize segmentedControl4;
-@synthesize segmentedControl5;
-@synthesize segmentedControl6;
-@synthesize segmentedControl7;
-@synthesize segmentedControl8;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -85,17 +76,23 @@
     }
     self.label.hidden = YES;
 
-    [segmentedControl1 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl2 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl3 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl4 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl5 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl6 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl7 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl8 setSelectedSegmentIndex:UISegmentedControlNoSegment];
 
+    NSArray *array = [NSArray arrayWithObjects:[NSArray arrayWithObjects:@"Not well", @"OK", @"Great", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+                    [NSArray arrayWithObjects:@"Yes", @"No", nil],
+    nil];
     for (NSUInteger i = 0; i < 9; i++) {
         [self.scrollView addSubview: [self createTextView: i]];
+
+        if (i < 8) {
+            UISegmentedControl *sc = [self createSegmentControl:[array objectAtIndex:i] onPage:i];
+            [self.scrollView addSubview:sc];
+        }
     }
     
     [self startLocationTracker];
@@ -112,6 +109,17 @@
     textView.textAlignment = NSTextAlignmentCenter;
 
     return textView;
+}
+
+- (UISegmentedControl *)createSegmentControl: (NSArray *)segments onPage: (NSUInteger)page {
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems: segments];
+    [segmentedControl addTarget:self action:@selector(updateQuestion:) forControlEvents: UIControlEventValueChanged];
+    CGRect frame = segmentedControl.frame;
+    frame.origin.x = 160 + 320*page - frame.size.width / 2;
+    frame.origin.y = 496;
+
+    segmentedControl.frame = frame;
+    return segmentedControl;
 }
 
 - (void)createPage:(NSUInteger)page {
@@ -209,19 +217,13 @@
 
 - (IBAction)updateQuestion:(id)sender {
     isButton = YES;
-    if ([sender tag] == 0) {
-        UISegmentedControl *s = sender;
-        NSString *a = s.selectedSegmentIndex == 0 ? @"yes" : @"no";
-        [answers replaceObjectAtIndex:currentIndex withObject:a];
-    } else if ([sender tag] == 1) {
-        //[answers replaceObjectAtIndex:currentIndex withObject:@"yes"];
-    } else if ([sender tag] == 2) {
+    if ([sender tag] == 2) {
         NSLog(@"answers: %@", answers);
         [self finishSurvey];
-    } else if ([sender tag] == 3) {
-        [answers replaceObjectAtIndex:currentIndex withObject: [NSString stringWithFormat: @"%d", self.segmentedControl1.selectedSegmentIndex]];
+    } else {
+        [answers replaceObjectAtIndex:currentIndex withObject: [NSString stringWithFormat: @"%d", [sender selectedSegmentIndex]]];
     }
-    //currentIndex++;
+
     NSLog(@"moving page in updateQuestion: %d", currentIndex + 1);
     NSInteger offset = self.scrollView.contentOffset.x;
     if (offset % 320 == 0) {
@@ -269,25 +271,6 @@
 
 - (IBAction)buttonClicked:(id)sender {
     [self updateQuestion:sender];
-}
-
-- (IBAction)sliderChanged:(id)sender {
-
-    float f = self.slider.value;
-    NSString *text = nil;
-    if (f < 1) {
-        text = @"Bad";
-    } else if (1 <= f && f < 2) {
-        text = @"Not so well";
-    } else if (2 <= f && f < 3) {
-        text = @"Just OK";
-    } else if (3 <= f && f < 4) {
-        text = @"Good";
-    } else if (4 <= f && f <= 5) {
-        text = @"Excellent";
-    }
-    lastAnswer = text;
-    [self.button1 setTitle:text forState:UIControlStateNormal];
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request {
@@ -416,15 +399,6 @@
 
     self.tempView.hidden = NO;
     self.label.hidden = YES;
-
-    [segmentedControl1 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl2 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl3 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl4 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl5 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl6 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl7 setSelectedSegmentIndex:UISegmentedControlNoSegment];
-    [segmentedControl8 setSelectedSegmentIndex:UISegmentedControlNoSegment];
 }
 
 - (void)startLocationTracker {
