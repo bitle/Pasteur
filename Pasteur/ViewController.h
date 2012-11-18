@@ -32,6 +32,7 @@
     BOOL shouldChangePage;
     NSUInteger schedulledPage;
     UILabel *confirmationLabel;
+    UIActivityIndicatorView *activityIndicator;
 }
 
 @property (nonatomic, strong) CLLocation *bestEffortAtLocation;
@@ -45,6 +46,7 @@
 
 @property (nonatomic, strong) IBOutlet UIButton *button1;
 @property (nonatomic, strong) IBOutlet UILabel *confirmationLabel;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 - (IBAction)updateQuestion:(id)sender;
 - (IBAction)buttonClicked:(id)sender;

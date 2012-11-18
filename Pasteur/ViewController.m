@@ -33,6 +33,7 @@
 @synthesize scrollView;
 @synthesize tempView;
 @synthesize confirmationLabel;
+@synthesize activityIndicator;
 
 @synthesize button1;
 
@@ -95,6 +96,8 @@
 }
 
 - (void)createQuestions: (NSArray *)theQuestions {
+    NSLog(@"createQuestions");
+    self.tempView.hidden = NO;
     self.scrollView.contentSize = CGSizeMake(theQuestions.count*320, self.scrollView.frame.size.height);
     for (NSUInteger i = 0; i < theQuestions.count - 1; i++) {
         NSDictionary *questionModel = [theQuestions objectAtIndex:i];
@@ -205,6 +208,8 @@
 }
 
 - (void)fetchQuestionsAsync {
+    self.activityIndicator.hidden = NO;
+    [self.activityIndicator startAnimating];
     NSURL *url = [NSURL URLWithString:@"https://script.google.com/macros/s/AKfycbwpef4lya6GTyBiLn6tqIEldmGPgk4cbE4L0Nt1yaARin3YKq3o/exec"];
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     request.delegate = self;
@@ -292,6 +297,7 @@
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request {
+    NSLog(@"request finished: %d", request.tag);
     switch (request.tag) {
         case 2:
         {
@@ -303,6 +309,8 @@
 
             self.questions = theQuestions;
             [self createQuestions: theQuestions];
+            [self.activityIndicator stopAnimating];
+            self.activityIndicator.hidden = YES;
         }
             break;
         case 3:
@@ -325,6 +333,8 @@
 - (void)requestFailed:(ASIHTTPRequest *)request {
    NSError *error = [request error];
     NSLog(@"response failed: %@", [error debugDescription]);
+    [self.activityIndicator stopAnimating];
+    self.activityIndicator.hidden = YES;
 }
 
 - (void)agreementViewDone:(BOOL)isAgree {
@@ -412,6 +422,8 @@
     for(UIView *view in self.scrollView.subviews) {
         [view removeFromSuperview];
     }
+
+    self.scrollView.contentSize = CGSizeMake(320, self.scrollView.frame.size.height);
 
     [self fetchQuestionsAsync];
 
