@@ -21,11 +21,11 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
-    [[UIApplication sharedApplication]
-            registerForRemoteNotificationTypes:
-            (UIRemoteNotificationTypeAlert |
-             UIRemoteNotificationTypeBadge |
-             UIRemoteNotificationTypeSound)];
+//    [[UIApplication sharedApplication]
+//            registerForRemoteNotificationTypes:
+//            (UIRemoteNotificationTypeAlert |
+//             UIRemoteNotificationTypeBadge |
+//             UIRemoteNotificationTypeSound)];
 
     return YES;
 }
